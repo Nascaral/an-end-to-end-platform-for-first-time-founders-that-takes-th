@@ -49,10 +49,20 @@ export default function Home() {
     <main className="flex flex-col h-screen max-w-2xl mx-auto px-4">
       {/* Header */}
       <header className="py-6 border-b border-zinc-800">
-        <h1 className="text-xl font-semibold tracking-tight">Founder AI Guide</h1>
-        <p className="text-zinc-400 text-sm mt-1">
-          Brutally honest startup validation — no cheerleading.
-        </p>
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-xl font-semibold tracking-tight">Founder AI Guide</h1>
+            <p className="text-zinc-400 text-sm mt-1">
+              Brutally honest startup validation — no cheerleading.
+            </p>
+          </div>
+          <a
+            href="#"
+            className="inline-flex items-center gap-2 border border-sky-500/50 hover:border-sky-400 hover:bg-sky-500/10 text-sky-400 text-sm font-semibold px-4 py-2 rounded-lg transition-colors"
+          >
+            Log in
+          </a>
+        </div>
         <div className="mt-3 rounded-md bg-amber-950/60 border border-amber-700/50 px-3 py-2 text-xs text-amber-300">
           <strong>Honest note:</strong> This product&apos;s core assumptions around multi-tool fragmentation
           being a purchase-motivating pain point, and founders completing customer conversations inside
@@ -81,7 +91,7 @@ export default function Home() {
             <div
               className={`max-w-[85%] rounded-lg px-4 py-2.5 text-sm whitespace-pre-wrap leading-relaxed ${
                 m.role === 'user'
-                  ? 'bg-indigo-600 text-white'
+                  ? 'bg-sky-500 text-white'
                   : 'bg-zinc-800 text-zinc-100'
               }`}
             >
@@ -107,7 +117,7 @@ export default function Home() {
       {/* Input */}
       <form onSubmit={sendMessage} className="py-4 border-t border-zinc-800 flex gap-2">
         <input
-          className="flex-1 rounded-lg bg-zinc-800 border border-zinc-700 px-3 py-2 text-sm placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="flex-1 rounded-lg bg-zinc-800 border border-zinc-700 px-3 py-2 text-sm placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-sky-500"
           placeholder="Describe your idea…"
           value={input}
           onChange={e => setInput(e.target.value)}
@@ -116,7 +126,7 @@ export default function Home() {
         <button
           type="submit"
           disabled={loading || !input.trim()}
-          className="rounded-lg bg-indigo-600 hover:bg-indigo-500 disabled:opacity-40 disabled:cursor-not-allowed px-4 py-2 text-sm font-medium transition-colors"
+          className="rounded-lg bg-sky-500 hover:bg-sky-400 disabled:opacity-40 disabled:cursor-not-allowed px-4 py-2 text-sm font-medium transition-colors"
         >
           Send
         </button>
