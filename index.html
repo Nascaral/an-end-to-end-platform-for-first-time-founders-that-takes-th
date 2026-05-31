@@ -11,22 +11,33 @@
       theme: {
         extend: {
           colors: {
-            brand: {
-              50:  '#f0f9ff',
-              100: '#e0f2fe',
-              200: '#bae6fd',
-              300: '#7dd3fc',
-              400: '#38bdf8',
-              500: '#0ea5e9',
-              600: '#0284c7',
-              700: '#0369a1',
-              800: '#075985',
-              900: '#0c4a6e',
+            // Brand palette
+            night:   '#0B0C1E',
+            surface: '#13152B',
+            card:    '#1A1D38',
+            border:  '#252847',
+            violet: {
+              400: '#A78BFA',
+              500: '#8B5CF6',
+              600: '#7C3AED',
+              700: '#6D28D9',
             },
-            ink: '#0f0f1a',
+            ember: {
+              400: '#FB923C',
+              500: '#F97316',
+            },
+            jade: {
+              400: '#34D399',
+              500: '#10B981',
+            },
+            fog:     '#94A3B8',
+            mist:    '#CBD5E1',
           },
           fontFamily: {
             sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+          backgroundImage: {
+            'hero-grid': "url(\"data:image/svg+xml,%3Csvg xmlns='https://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M0 .5h40M.5 0v40' stroke='%23252847' stroke-width='1'/%3E%3C/svg%3E\")",
           },
         },
       },
@@ -37,174 +48,235 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
     html { scroll-behavior: smooth; }
+
+    body { background-color: #0B0C1E; }
+
     .gradient-text {
-      background: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 50%, #7dd3fc 100%);
+      background: linear-gradient(135deg, #A78BFA 0%, #F97316 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
+
+    .glow-violet {
+      box-shadow: 0 0 40px rgba(139, 92, 246, 0.25);
+    }
+
+    .glow-violet-sm {
+      box-shadow: 0 0 18px rgba(139, 92, 246, 0.2);
+    }
+
     .card-hover {
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
     }
     .card-hover:hover {
       transform: translateY(-2px);
-      box-shadow: 0 20px 40px rgba(14, 165, 233, 0.12);
+      border-color: #8B5CF6 !important;
+      box-shadow: 0 12px 40px rgba(139, 92, 246, 0.15);
     }
-    .stage-line::after {
+
+    .noise {
+      position: relative;
+    }
+    .noise::before {
       content: '';
       position: absolute;
-      left: 50%;
-      bottom: -2rem;
-      transform: translateX(-50%);
-      width: 2px;
-      height: 2rem;
-      background: linear-gradient(to bottom, #0ea5e9, transparent);
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='https://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
     }
+
+    .stage-connector {
+      background: linear-gradient(to bottom, #8B5CF6, transparent);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-6px); }
+    }
+    .float { animation: float 4s ease-in-out infinite; }
+
+    .badge-violet { background: rgba(139,92,246,0.15); border: 1px solid rgba(139,92,246,0.35); color: #C4B5FD; }
+    .badge-ember  { background: rgba(249,115,22,0.12); border: 1px solid rgba(249,115,22,0.3);  color: #FCA97C; }
+    .badge-jade   { background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.3);  color: #6EE7B7; }
+    .badge-red    { background: rgba(239,68,68,0.12);  border: 1px solid rgba(239,68,68,0.3);   color: #FCA5A5; }
   </style>
 </head>
-<body class="bg-white font-sans text-ink antialiased">
+<body class="font-sans text-mist antialiased">
 
-  <!-- Nav -->
-  <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+  <!-- ══════════════════════════════════ NAV ══════════════════════════════════ -->
+  <header class="fixed top-0 left-0 right-0 z-50" style="background: rgba(11,12,30,0.85); backdrop-filter: blur(16px); border-bottom: 1px solid #252847;">
     <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-      <a href="#" class="flex items-center gap-2.5">
-        <div class="w-8 h-8 rounded-lg bg-brand-600 flex items-center justify-center">
-          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <!-- Icon mark -->
+        <div class="relative w-9 h-9 flex-shrink-0">
+          <svg viewBox="0 0 36 36" fill="none" xmlns="https://www.w3.org/2000/svg" class="w-9 h-9">
+            <rect width="36" height="36" rx="9" fill="#7C3AED"/>
+            <!-- compass arrow up -->
+            <path d="M18 8 L21 18 L18 16 L15 18 Z" fill="#FFFFFF"/>
+            <!-- compass arrow down -->
+            <path d="M18 28 L15 18 L18 20 L21 18 Z" fill="rgba(255,255,255,0.4)"/>
+            <!-- center dot -->
+            <circle cx="18" cy="18" r="2" fill="#F97316"/>
           </svg>
         </div>
-        <span class="font-bold text-gray-900 text-lg tracking-tight">Founder AI Guide</span>
+        <div class="leading-none">
+          <span class="block font-black text-white text-base tracking-tight">Founder</span>
+          <span class="block font-semibold text-violet-400 text-[11px] tracking-widest uppercase">AI Guide</span>
+        </div>
       </a>
+
       <nav class="hidden md:flex items-center gap-8">
-        <a href="#problem" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Problem</a>
-        <a href="#how-it-works" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">How it works</a>
-        <a href="#pricing" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Pricing</a>
+        <a href="#problem"     class="text-sm text-fog hover:text-white transition-colors">Problem</a>
+        <a href="#how-it-works" class="text-sm text-fog hover:text-white transition-colors">How it works</a>
+        <a href="#pricing"     class="text-sm text-fog hover:text-white transition-colors">Pricing</a>
       </nav>
+
       <div class="hidden md:flex items-center gap-3">
-        <a href="#" class="inline-flex items-center gap-2 border border-gray-200 hover:border-brand-400 hover:text-brand-700 text-gray-600 text-sm font-semibold px-4 py-2 rounded-lg transition-colors">
+        <a href="#" style="border:1px solid #252847;" class="inline-flex items-center text-fog hover:text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors hover:border-violet-500">
           Log in
         </a>
-        <a href="#waitlist" class="inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors">
-          Join the waitlist
+        <a href="#waitlist" class="inline-flex items-center gap-2 bg-violet-600 hover:bg-violet-500 text-white text-sm font-bold px-5 py-2 rounded-lg transition-colors glow-violet-sm">
+          Join waitlist
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
         </a>
       </div>
     </div>
   </header>
 
-  <!-- Hero -->
-  <section class="pt-32 pb-24 px-6">
-    <div class="max-w-4xl mx-auto text-center">
-      <div class="inline-flex items-center gap-2 bg-brand-50 border border-brand-200 text-brand-700 text-xs font-semibold px-3 py-1.5 rounded-full mb-8">
-        <span class="w-1.5 h-1.5 bg-brand-500 rounded-full animate-pulse"></span>
-        Early access — founding member pricing
+  <!-- ══════════════════════════════════ HERO ══════════════════════════════════ -->
+  <section class="relative pt-36 pb-28 px-6 overflow-hidden">
+    <!-- grid background -->
+    <div class="absolute inset-0 hero-grid opacity-100" style="background-image: url(\"data:image/svg+xml,%3Csvg xmlns='https://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M0 .5h40M.5 0v40' stroke='%23252847' stroke-width='1'/%3E%3C/svg%3E\")"></div>
+    <!-- glow orbs -->
+    <div class="absolute top-20 left-1/2 -translate-x-1/2 w-[700px] h-[400px] rounded-full" style="background: radial-gradient(ellipse at center, rgba(124,58,237,0.18) 0%, transparent 70%); pointer-events:none;"></div>
+    <div class="absolute bottom-0 right-1/4 w-64 h-64 rounded-full" style="background: radial-gradient(ellipse at center, rgba(249,115,22,0.1) 0%, transparent 70%); pointer-events:none;"></div>
+
+    <div class="relative max-w-4xl mx-auto text-center">
+      <!-- pill badge -->
+      <div class="inline-flex items-center gap-2 badge-violet text-xs font-semibold px-3.5 py-1.5 rounded-full mb-8">
+        <span class="w-1.5 h-1.5 bg-violet-400 rounded-full animate-pulse"></span>
+        Early access · founding member pricing
       </div>
-      <h1 class="text-5xl md:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tight text-gray-900 mb-6">
+
+      <!-- headline -->
+      <h1 class="text-5xl md:text-6xl lg:text-[5rem] font-black leading-[1.04] tracking-tight text-white mb-6">
         From raw idea to<br />
         <span class="gradient-text">launched MVP.</span><br />
-        One memory.
+        <span class="text-mist">One memory.</span>
       </h1>
-      <p class="text-xl md:text-2xl text-gray-500 font-normal max-w-2xl mx-auto leading-relaxed mb-10">
+
+      <p class="text-lg md:text-xl text-fog font-normal max-w-2xl mx-auto leading-relaxed mb-10">
         The platform that carries what you learn — from your first idea through every customer conversation — directly into the product you build. Nothing gets lost between tools.
       </p>
+
       <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-        <a href="#waitlist" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-brand-600 hover:bg-brand-700 text-white text-base font-semibold px-8 py-4 rounded-xl transition-colors shadow-lg shadow-brand-500/20">
+        <a href="#waitlist" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-violet-600 hover:bg-violet-500 text-white text-base font-bold px-8 py-4 rounded-xl transition-colors glow-violet">
           Get early access
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-          </svg>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
         </a>
-        <a href="#how-it-works" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white border border-gray-200 hover:border-gray-300 text-gray-700 text-base font-semibold px-8 py-4 rounded-xl transition-colors">
+        <a href="#how-it-works" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 text-fog hover:text-white text-base font-semibold px-8 py-4 rounded-xl transition-colors" style="border:1px solid #252847;">
           See how it works
         </a>
       </div>
-      <p class="mt-4 text-sm text-gray-400">No credit card. No fluff. Currently in private beta.</p>
-    </div>
-  </section>
+      <p class="mt-5 text-xs text-fog/50">No credit card. No fluff. Currently in private beta.</p>
 
-  <!-- Social proof strip -->
-  <section class="py-10 border-y border-gray-100 bg-gray-50">
-    <div class="max-w-5xl mx-auto px-6">
-      <p class="text-center text-xs font-semibold tracking-widest text-gray-400 uppercase mb-8">The fragmented stack you're replacing</p>
-      <div class="flex flex-wrap justify-center items-center gap-x-10 gap-y-4">
-        <div class="flex items-center gap-2 text-gray-400">
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-          ChatGPT
-        </div>
-        <span class="text-gray-300 text-xl font-light">+</span>
-        <div class="flex items-center gap-2 text-gray-400">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
-          Data reports
-        </div>
-        <span class="text-gray-300 text-xl font-light">+</span>
-        <div class="flex items-center gap-2 text-gray-400">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
-          Interview guides
-        </div>
-        <span class="text-gray-300 text-xl font-light">+</span>
-        <div class="flex items-center gap-2 text-gray-400">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
-          AI builders
-        </div>
-        <span class="text-gray-300 text-xl font-light">+</span>
-        <div class="flex items-center gap-2 text-gray-400">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
-          Blog posts
-        </div>
-        <span class="mx-4 text-gray-300 text-xl font-light hidden sm:block">=</span>
-        <div class="w-full sm:w-auto text-center">
-          <span class="text-sm font-semibold text-red-500 bg-red-50 border border-red-200 px-3 py-1 rounded-full">5 tools, 0 shared memory</span>
+      <!-- floating visual -->
+      <div class="mt-16 float">
+        <div class="inline-flex items-center gap-6 rounded-2xl px-8 py-5 mx-auto" style="background:#13152B; border:1px solid #252847;">
+          <div class="text-left">
+            <p class="text-[10px] font-semibold tracking-widest text-fog/60 uppercase mb-1">Verdict</p>
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-jade-400 animate-pulse"></span>
+              <span class="text-jade-400 font-bold text-sm">VALIDATED — ready to build</span>
+            </div>
+          </div>
+          <div class="w-px h-10 bg-border"></div>
+          <div class="text-left">
+            <p class="text-[10px] font-semibold tracking-widest text-fog/60 uppercase mb-1">Conversations</p>
+            <span class="text-white font-bold text-sm">8 logged ✓</span>
+          </div>
+          <div class="w-px h-10 bg-border"></div>
+          <div class="text-left">
+            <p class="text-[10px] font-semibold tracking-widest text-fog/60 uppercase mb-1">MVP spec</p>
+            <span class="text-ember-400 font-bold text-sm">Generated →</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Problem -->
+  <!-- ══════════════════════════════ STACK STRIP ══════════════════════════════ -->
+  <section class="py-10" style="border-top:1px solid #252847; border-bottom:1px solid #252847; background:#13152B;">
+    <div class="max-w-5xl mx-auto px-6">
+      <p class="text-center text-[10px] font-bold tracking-widest text-fog/40 uppercase mb-7">The fragmented stack you're replacing</p>
+      <div class="flex flex-wrap justify-center items-center gap-x-8 gap-y-4">
+        <span class="text-sm text-fog/60 font-medium">ChatGPT</span>
+        <span class="text-border text-lg">+</span>
+        <span class="text-sm text-fog/60 font-medium">Data reports</span>
+        <span class="text-border text-lg">+</span>
+        <span class="text-sm text-fog/60 font-medium">Interview guides</span>
+        <span class="text-border text-lg">+</span>
+        <span class="text-sm text-fog/60 font-medium">AI builders</span>
+        <span class="text-border text-lg">+</span>
+        <span class="text-sm text-fog/60 font-medium">Blog posts</span>
+        <span class="text-border text-lg hidden sm:block">=</span>
+        <span class="badge-red text-xs font-bold px-3 py-1 rounded-full">5 tools · 0 shared memory</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════ PROBLEM ══════════════════════════════════ -->
   <section id="problem" class="py-24 px-6">
     <div class="max-w-5xl mx-auto">
       <div class="grid lg:grid-cols-2 gap-16 items-center">
         <div>
-          <p class="text-brand-600 font-semibold text-sm uppercase tracking-widest mb-4">The real problem</p>
-          <h2 class="text-4xl md:text-5xl font-black leading-tight text-gray-900 mb-6">
+          <p class="text-violet-400 font-semibold text-xs uppercase tracking-widest mb-4">The real problem</p>
+          <h2 class="text-4xl md:text-5xl font-black leading-tight text-white mb-6">
             It's not that you're using the wrong tools.
           </h2>
-          <p class="text-lg text-gray-500 leading-relaxed mb-6">
+          <p class="text-fog leading-relaxed mb-5">
             Each tool in your stack is genuinely good at its one thing. ChatGPT brainstorms. Data reports surface market size. Lovable builds UIs. The problem is the handoff — what you learn at each stage evaporates before the next tool can use it.
           </p>
-          <p class="text-lg text-gray-500 leading-relaxed">
+          <p class="text-fog leading-relaxed">
             You end up rebuilding context from scratch every time. Your customer interviews don't inform your MVP brief. Your MVP brief doesn't inform your GTM copy. Every tool starts cold.
           </p>
         </div>
         <div class="space-y-4">
-          <div class="bg-red-50 border border-red-100 rounded-2xl p-6">
+          <!-- pain card -->
+          <div class="rounded-2xl p-6 card-hover" style="background:#1A1D38; border:1px solid #252847;">
             <div class="flex items-start gap-4">
-              <div class="w-8 h-8 rounded-lg bg-red-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                <svg class="w-4 h-4 text-red-500" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+              <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5" style="background:rgba(239,68,68,0.12);">
+                <svg class="w-4 h-4" style="color:#F87171" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
               </div>
               <div>
-                <p class="font-semibold text-gray-900 mb-1">Validation tools that cheerlead</p>
-                <p class="text-sm text-gray-500">Most AI tools confirm whatever you bring them. They don't push back, they don't demand real conversations, and they'll call anything "validated."</p>
+                <p class="font-semibold text-white mb-1">Validation tools that cheerlead</p>
+                <p class="text-sm text-fog">Most AI tools confirm whatever you bring them. They don't push back, they don't demand real conversations, and they'll call anything "validated."</p>
               </div>
             </div>
           </div>
-          <div class="bg-red-50 border border-red-100 rounded-2xl p-6">
+          <div class="rounded-2xl p-6 card-hover" style="background:#1A1D38; border:1px solid #252847;">
             <div class="flex items-start gap-4">
-              <div class="w-8 h-8 rounded-lg bg-red-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                <svg class="w-4 h-4 text-red-500" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+              <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5" style="background:rgba(239,68,68,0.12);">
+                <svg class="w-4 h-4" style="color:#F87171" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
               </div>
               <div>
-                <p class="font-semibold text-gray-900 mb-1">The handoff is where context dies</p>
-                <p class="text-sm text-gray-500">Copy-pasting insights between tools isn't a workflow — it's a tax you pay every single step. The next tool never has the full picture.</p>
+                <p class="font-semibold text-white mb-1">The handoff is where context dies</p>
+                <p class="text-sm text-fog">Copy-pasting insights between tools isn't a workflow — it's a tax you pay every single step. The next tool never has the full picture.</p>
               </div>
             </div>
           </div>
-          <div class="bg-red-50 border border-red-100 rounded-2xl p-6">
+          <div class="rounded-2xl p-6 card-hover" style="background:#1A1D38; border:1px solid #252847;">
             <div class="flex items-start gap-4">
-              <div class="w-8 h-8 rounded-lg bg-red-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                <svg class="w-4 h-4 text-red-500" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+              <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5" style="background:rgba(239,68,68,0.12);">
+                <svg class="w-4 h-4" style="color:#F87171" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
               </div>
               <div>
-                <p class="font-semibold text-gray-900 mb-1">Guidance that doesn't know your history</p>
-                <p class="text-sm text-gray-500">Blog posts and generic AI advice are written for someone else's startup. None of it knows what you've already learned or where you've already been.</p>
+                <p class="font-semibold text-white mb-1">Guidance that doesn't know your history</p>
+                <p class="text-sm text-fog">Blog posts and generic AI advice are written for someone else's startup. None of it knows what you've already learned or where you've already been.</p>
               </div>
             </div>
           </div>
@@ -213,137 +285,107 @@
     </div>
   </section>
 
-  <!-- How it works -->
-  <section id="how-it-works" class="py-24 px-6 bg-gray-50">
+  <!-- ══════════════════════════ HOW IT WORKS ══════════════════════════════════ -->
+  <section id="how-it-works" class="py-24 px-6" style="background:#13152B; border-top:1px solid #252847; border-bottom:1px solid #252847;">
     <div class="max-w-5xl mx-auto">
       <div class="text-center mb-16">
-        <p class="text-brand-600 font-semibold text-sm uppercase tracking-widest mb-4">How it works</p>
-        <h2 class="text-4xl md:text-5xl font-black leading-tight text-gray-900 mb-4">
+        <p class="text-violet-400 font-semibold text-xs uppercase tracking-widest mb-4">How it works</p>
+        <h2 class="text-4xl md:text-5xl font-black leading-tight text-white mb-4">
           Four stages. One memory.
         </h2>
-        <p class="text-xl text-gray-500 max-w-2xl mx-auto">
+        <p class="text-fog max-w-2xl mx-auto">
           Every stage builds on the last. What you learn in a customer interview becomes the spec your builder uses. Nothing gets re-explained.
         </p>
       </div>
 
-      <div class="space-y-6">
+      <div class="space-y-4">
 
         <!-- Stage 1 -->
-        <div class="bg-white rounded-2xl border border-gray-200 p-8 card-hover">
+        <div class="rounded-2xl p-7 card-hover" style="background:#1A1D38; border:1px solid #252847;">
           <div class="flex items-start gap-6">
-            <div class="flex-shrink-0">
-              <div class="w-12 h-12 rounded-xl bg-brand-600 flex items-center justify-center">
-                <span class="text-white font-black text-lg">1</span>
-              </div>
-            </div>
+            <div class="flex-shrink-0 w-11 h-11 rounded-xl bg-violet-600 flex items-center justify-center font-black text-white text-lg">1</div>
             <div class="flex-1">
-              <div class="flex items-center gap-3 mb-2">
-                <h3 class="text-xl font-bold text-gray-900">Brutally honest validation</h3>
-                <span class="text-xs font-semibold bg-amber-100 text-amber-700 border border-amber-200 px-2.5 py-1 rounded-full">BUILD / KILL / PIVOT</span>
+              <div class="flex flex-wrap items-center gap-3 mb-2">
+                <h3 class="text-lg font-bold text-white">Brutally honest validation</h3>
+                <span class="badge-ember text-[11px] font-bold px-2.5 py-0.5 rounded-full">BUILD / KILL / PIVOT</span>
               </div>
-              <p class="text-gray-500 leading-relaxed mb-4">
+              <p class="text-fog leading-relaxed mb-4 text-sm">
                 We refuse to cheerlead. Your idea gets a sourced verdict — and it stays "unvalidated" until you log real customer conversations. Not surveys. Not Twitter polls. Actual human conversations with the people who would pay.
               </p>
               <div class="flex flex-wrap gap-2">
-                <span class="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Sourced market research</span>
-                <span class="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Honest push-back</span>
-                <span class="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full">No false positives</span>
+                <span class="text-xs text-fog/70 px-3 py-1 rounded-full" style="background:#252847;">Sourced market research</span>
+                <span class="text-xs text-fog/70 px-3 py-1 rounded-full" style="background:#252847;">Honest push-back</span>
+                <span class="text-xs text-fog/70 px-3 py-1 rounded-full" style="background:#252847;">No false positives</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Arrow -->
-        <div class="flex justify-center">
-          <svg class="w-6 h-6 text-brand-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-          </svg>
-        </div>
+        <div class="flex justify-center"><div class="w-px h-8 stage-connector"></div></div>
 
         <!-- Stage 2 -->
-        <div class="bg-white rounded-2xl border border-gray-200 p-8 card-hover">
+        <div class="rounded-2xl p-7 card-hover" style="background:#1A1D38; border:1px solid #252847;">
           <div class="flex items-start gap-6">
-            <div class="flex-shrink-0">
-              <div class="w-12 h-12 rounded-xl bg-brand-600 flex items-center justify-center">
-                <span class="text-white font-black text-lg">2</span>
-              </div>
-            </div>
+            <div class="flex-shrink-0 w-11 h-11 rounded-xl bg-violet-600 flex items-center justify-center font-black text-white text-lg">2</div>
             <div class="flex-1">
-              <div class="flex items-center gap-3 mb-2">
-                <h3 class="text-xl font-bold text-gray-900">Customer conversation loop</h3>
-                <span class="text-xs font-semibold bg-blue-100 text-blue-700 border border-blue-200 px-2.5 py-1 rounded-full">Logged &amp; tracked</span>
+              <div class="flex flex-wrap items-center gap-3 mb-2">
+                <h3 class="text-lg font-bold text-white">Customer conversation loop</h3>
+                <span class="badge-violet text-[11px] font-bold px-2.5 py-0.5 rounded-full">Logged &amp; tracked</span>
               </div>
-              <p class="text-gray-500 leading-relaxed mb-4">
+              <p class="text-fog leading-relaxed mb-4 text-sm">
                 Every conversation you log visibly moves the verdict. You see exactly what's confirmed, what's still unknown, and what's been contradicted. The platform guides your interview structure so you capture the signal that actually matters.
               </p>
               <div class="flex flex-wrap gap-2">
-                <span class="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Interview guides</span>
-                <span class="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Assumption tracking</span>
-                <span class="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Live verdict updates</span>
+                <span class="text-xs text-fog/70 px-3 py-1 rounded-full" style="background:#252847;">Interview guides</span>
+                <span class="text-xs text-fog/70 px-3 py-1 rounded-full" style="background:#252847;">Assumption tracking</span>
+                <span class="text-xs text-fog/70 px-3 py-1 rounded-full" style="background:#252847;">Live verdict updates</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Arrow -->
-        <div class="flex justify-center">
-          <svg class="w-6 h-6 text-brand-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-          </svg>
-        </div>
+        <div class="flex justify-center"><div class="w-px h-8 stage-connector"></div></div>
 
-        <!-- Stage 3 -->
-        <div class="bg-white rounded-2xl border border-gray-200 p-8 card-hover relative overflow-hidden">
+        <!-- Stage 3 — key handoff -->
+        <div class="rounded-2xl p-7 card-hover relative overflow-hidden" style="background:#1A1D38; border:1px solid #7C3AED;">
+          <div class="absolute inset-0" style="background:linear-gradient(135deg, rgba(124,58,237,0.08) 0%, transparent 60%); pointer-events:none;"></div>
           <div class="absolute top-4 right-4">
-            <span class="text-xs font-semibold bg-brand-100 text-brand-700 border border-brand-200 px-2.5 py-1 rounded-full">The key handoff</span>
+            <span class="badge-violet text-[11px] font-bold px-2.5 py-0.5 rounded-full">The key handoff ✦</span>
           </div>
           <div class="flex items-start gap-6">
-            <div class="flex-shrink-0">
-              <div class="w-12 h-12 rounded-xl bg-brand-600 flex items-center justify-center">
-                <span class="text-white font-black text-lg">3</span>
-              </div>
-            </div>
+            <div class="flex-shrink-0 w-11 h-11 rounded-xl bg-violet-600 flex items-center justify-center font-black text-white text-lg glow-violet-sm">3</div>
             <div class="flex-1">
-              <h3 class="text-xl font-bold text-gray-900 mb-2">Validation → MVP spec → Builder</h3>
-              <p class="text-gray-500 leading-relaxed mb-4">
+              <h3 class="text-lg font-bold text-white mb-2">Validation → MVP spec → Builder</h3>
+              <p class="text-fog leading-relaxed mb-4 text-sm">
                 This is the gap no one fills. What you learned in customer conversations — the exact words people used, the workflow gaps, the confirmed pain — gets turned into a build spec that your AI builder actually uses. Your Lovable prompt isn't written from scratch. It's written from evidence.
               </p>
               <div class="flex flex-wrap gap-2">
-                <span class="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Auto-generated build spec</span>
-                <span class="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Customer language preserved</span>
-                <span class="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Builder-ready export</span>
+                <span class="text-xs text-fog/70 px-3 py-1 rounded-full" style="background:#252847;">Auto-generated build spec</span>
+                <span class="text-xs text-fog/70 px-3 py-1 rounded-full" style="background:#252847;">Customer language preserved</span>
+                <span class="text-xs text-fog/70 px-3 py-1 rounded-full" style="background:#252847;">Builder-ready export</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Arrow -->
-        <div class="flex justify-center">
-          <svg class="w-6 h-6 text-brand-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-          </svg>
-        </div>
+        <div class="flex justify-center"><div class="w-px h-8 stage-connector"></div></div>
 
         <!-- Stage 4 -->
-        <div class="bg-white rounded-2xl border border-gray-200 p-8 card-hover">
+        <div class="rounded-2xl p-7 card-hover" style="background:#1A1D38; border:1px solid #252847;">
           <div class="flex items-start gap-6">
-            <div class="flex-shrink-0">
-              <div class="w-12 h-12 rounded-xl bg-brand-600 flex items-center justify-center">
-                <span class="text-white font-black text-lg">4</span>
-              </div>
-            </div>
+            <div class="flex-shrink-0 w-11 h-11 rounded-xl bg-violet-600 flex items-center justify-center font-black text-white text-lg">4</div>
             <div class="flex-1">
-              <div class="flex items-center gap-3 mb-2">
-                <h3 class="text-xl font-bold text-gray-900">Context-aware ongoing guidance</h3>
-                <span class="text-xs font-semibold bg-green-100 text-green-700 border border-green-200 px-2.5 py-1 rounded-full">Knows your history</span>
+              <div class="flex flex-wrap items-center gap-3 mb-2">
+                <h3 class="text-lg font-bold text-white">Context-aware ongoing guidance</h3>
+                <span class="badge-jade text-[11px] font-bold px-2.5 py-0.5 rounded-full">Knows your history</span>
               </div>
-              <p class="text-gray-500 leading-relaxed mb-4">
+              <p class="text-fog leading-relaxed mb-4 text-sm">
                 GTM strategy, pitch prep, fundraising guidance — all aware of everything you've done. Not generic advice. Advice that knows which assumptions you've confirmed, who your early customers are, and what your MVP actually does.
               </p>
               <div class="flex flex-wrap gap-2">
-                <span class="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full">GTM planning</span>
-                <span class="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Pitch prep</span>
-                <span class="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Raise readiness</span>
+                <span class="text-xs text-fog/70 px-3 py-1 rounded-full" style="background:#252847;">GTM planning</span>
+                <span class="text-xs text-fog/70 px-3 py-1 rounded-full" style="background:#252847;">Pitch prep</span>
+                <span class="text-xs text-fog/70 px-3 py-1 rounded-full" style="background:#252847;">Raise readiness</span>
               </div>
             </div>
           </div>
@@ -353,176 +395,144 @@
     </div>
   </section>
 
-  <!-- Differentiators -->
+  <!-- ══════════════════════════ DIFFERENTIATORS ═══════════════════════════════ -->
   <section class="py-24 px-6">
     <div class="max-w-5xl mx-auto">
       <div class="text-center mb-16">
-        <p class="text-brand-600 font-semibold text-sm uppercase tracking-widest mb-4">Why this exists</p>
-        <h2 class="text-4xl md:text-5xl font-black leading-tight text-gray-900">
-          Three things we do differently
-        </h2>
+        <p class="text-violet-400 font-semibold text-xs uppercase tracking-widest mb-4">Why this exists</p>
+        <h2 class="text-4xl md:text-5xl font-black leading-tight text-white">Three things we do differently</h2>
       </div>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="text-center">
-          <div class="w-14 h-14 rounded-2xl bg-brand-50 border border-brand-100 flex items-center justify-center mx-auto mb-6">
-            <svg class="w-7 h-7 text-brand-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="rounded-2xl p-7 text-center card-hover" style="background:#1A1D38; border:1px solid #252847;">
+          <div class="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-6" style="background:rgba(139,92,246,0.12); border:1px solid rgba(139,92,246,0.25);">
+            <svg class="w-7 h-7 text-violet-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
           </div>
-          <h3 class="font-bold text-gray-900 text-lg mb-3">We refuse to validate prematurely</h3>
-          <p class="text-gray-500 leading-relaxed">The verdict stays red until you've logged real customer conversations. We'd rather you hate us at stage two than build the wrong thing at stage three.</p>
+          <h3 class="font-bold text-white text-base mb-3">We refuse to validate prematurely</h3>
+          <p class="text-fog text-sm leading-relaxed">The verdict stays red until you've logged real customer conversations. We'd rather you hate us at stage two than build the wrong thing at stage three.</p>
         </div>
-        <div class="text-center">
-          <div class="w-14 h-14 rounded-2xl bg-brand-50 border border-brand-100 flex items-center justify-center mx-auto mb-6">
-            <svg class="w-7 h-7 text-brand-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-            </svg>
+        <div class="rounded-2xl p-7 text-center card-hover" style="background:#1A1D38; border:1px solid #252847;">
+          <div class="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-6" style="background:rgba(249,115,22,0.12); border:1px solid rgba(249,115,22,0.25);">
+            <svg class="w-7 h-7 text-ember-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
           </div>
-          <h3 class="font-bold text-gray-900 text-lg mb-3">The handoff is the product</h3>
-          <p class="text-gray-500 leading-relaxed">The moment validation becomes a build spec — that's what no one else does. That's the gap we fill. Not the validation, not the builder. The thing in between.</p>
+          <h3 class="font-bold text-white text-base mb-3">The handoff is the product</h3>
+          <p class="text-fog text-sm leading-relaxed">The moment validation becomes a build spec — that's what no one else does. Not the validation, not the builder. The thing in between.</p>
         </div>
-        <div class="text-center">
-          <div class="w-14 h-14 rounded-2xl bg-brand-50 border border-brand-100 flex items-center justify-center mx-auto mb-6">
-            <svg class="w-7 h-7 text-brand-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-            </svg>
+        <div class="rounded-2xl p-7 text-center card-hover" style="background:#1A1D38; border:1px solid #252847;">
+          <div class="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-6" style="background:rgba(16,185,129,0.12); border:1px solid rgba(16,185,129,0.25);">
+            <svg class="w-7 h-7 text-jade-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
           </div>
-          <h3 class="font-bold text-gray-900 text-lg mb-3">One memory, not five integrations</h3>
-          <p class="text-gray-500 leading-relaxed">We don't add a sixth tool to your stack. We replace the stack. Everything lives in one place so stage four genuinely knows what happened at stage one.</p>
+          <h3 class="font-bold text-white text-base mb-3">One memory, not five integrations</h3>
+          <p class="text-fog text-sm leading-relaxed">We don't add a sixth tool to your stack. We replace the stack. Everything lives in one place so stage four genuinely knows what happened at stage one.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Honest section -->
-  <section class="py-16 px-6 bg-amber-50 border-y border-amber-100">
+  <!-- ══════════════════════════ HONEST NOTE ════════════════════════════════════ -->
+  <section class="py-16 px-6" style="background:#13152B; border-top:1px solid #252847; border-bottom:1px solid #252847;">
     <div class="max-w-3xl mx-auto text-center">
-      <div class="w-12 h-12 rounded-2xl bg-amber-100 border border-amber-200 flex items-center justify-center mx-auto mb-6">
-        <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-        </svg>
+      <div class="w-12 h-12 rounded-2xl flex items-center justify-center mx-auto mb-6" style="background:rgba(249,115,22,0.12); border:1px solid rgba(249,115,22,0.25);">
+        <svg class="w-6 h-6 text-ember-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
       </div>
-      <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">A note on where we are</h2>
-      <p class="text-gray-600 leading-relaxed mb-4">
+      <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">A note on where we are</h2>
+      <p class="text-fog leading-relaxed mb-4 text-sm">
         We're in private beta. Some parts of the platform are still being built. We're not going to pretend otherwise. What we've proven is the concept — the gap between validation and the builder prompt is real, and it costs founders real time and real misdirection.
       </p>
-      <p class="text-gray-600 leading-relaxed">
+      <p class="text-fog leading-relaxed text-sm">
         Founding members get the lowest price we'll ever offer, direct access to give feedback, and the chance to shape what gets built next. If you're the type who'd rather help build something honest than wait for something polished, this is for you.
       </p>
     </div>
   </section>
 
-  <!-- Pricing -->
+  <!-- ══════════════════════════════ PRICING ═══════════════════════════════════ -->
   <section id="pricing" class="py-24 px-6">
     <div class="max-w-4xl mx-auto">
       <div class="text-center mb-16">
-        <p class="text-brand-600 font-semibold text-sm uppercase tracking-widest mb-4">Pricing</p>
-        <h2 class="text-4xl md:text-5xl font-black leading-tight text-gray-900 mb-4">
-          Simple. One plan.
-        </h2>
-        <p class="text-xl text-gray-500">
-          Everything included. No per-seat nonsense.
-        </p>
+        <p class="text-violet-400 font-semibold text-xs uppercase tracking-widest mb-4">Pricing</p>
+        <h2 class="text-4xl md:text-5xl font-black leading-tight text-white mb-4">Simple. One plan.</h2>
+        <p class="text-fog">Everything included. No per-seat nonsense.</p>
       </div>
       <div class="max-w-sm mx-auto">
-        <div class="bg-white border-2 border-brand-600 rounded-2xl p-8 text-center shadow-xl shadow-brand-500/10">
-          <div class="inline-block bg-brand-600 text-white text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-6">
-            Founding member
-          </div>
+        <div class="rounded-2xl p-8 text-center glow-violet" style="background:#1A1D38; border:2px solid #7C3AED;">
+          <div class="inline-block bg-violet-600 text-white text-[11px] font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-6">Founding member</div>
           <div class="mb-2">
-            <span class="text-5xl font-black text-gray-900">$19</span>
-            <span class="text-gray-400 ml-1">/mo</span>
+            <span class="text-5xl font-black text-white">$19</span>
+            <span class="text-fog ml-1">/mo</span>
           </div>
-          <p class="text-sm text-gray-400 mb-8">Billed monthly · cancel any time</p>
+          <p class="text-xs text-fog/60 mb-8">Billed monthly · cancel any time</p>
           <ul class="text-left space-y-3 mb-8">
-            <li class="flex items-center gap-3 text-sm text-gray-700">
-              <svg class="w-4 h-4 text-brand-500 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-              Idea validation with real sourcing
-            </li>
-            <li class="flex items-center gap-3 text-sm text-gray-700">
-              <svg class="w-4 h-4 text-brand-500 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-              Customer conversation logger
-            </li>
-            <li class="flex items-center gap-3 text-sm text-gray-700">
-              <svg class="w-4 h-4 text-brand-500 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-              Auto-generated MVP build spec
-            </li>
-            <li class="flex items-center gap-3 text-sm text-gray-700">
-              <svg class="w-4 h-4 text-brand-500 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-              Builder-ready export
-            </li>
-            <li class="flex items-center gap-3 text-sm text-gray-700">
-              <svg class="w-4 h-4 text-brand-500 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-              Context-aware GTM guidance
-            </li>
-            <li class="flex items-center gap-3 text-sm text-gray-700">
-              <svg class="w-4 h-4 text-brand-500 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-              Direct access to give product feedback
-            </li>
+            <li class="flex items-center gap-3 text-sm text-mist"><svg class="w-4 h-4 text-jade-400 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Idea validation with real sourcing</li>
+            <li class="flex items-center gap-3 text-sm text-mist"><svg class="w-4 h-4 text-jade-400 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Customer conversation logger</li>
+            <li class="flex items-center gap-3 text-sm text-mist"><svg class="w-4 h-4 text-jade-400 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Auto-generated MVP build spec</li>
+            <li class="flex items-center gap-3 text-sm text-mist"><svg class="w-4 h-4 text-jade-400 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Builder-ready export</li>
+            <li class="flex items-center gap-3 text-sm text-mist"><svg class="w-4 h-4 text-jade-400 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Context-aware GTM guidance</li>
+            <li class="flex items-center gap-3 text-sm text-mist"><svg class="w-4 h-4 text-jade-400 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Direct access to give product feedback</li>
           </ul>
-          <a href="#waitlist" class="block w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-3.5 rounded-xl transition-colors text-center">
+          <a href="#waitlist" class="block w-full bg-violet-600 hover:bg-violet-500 text-white font-bold py-3.5 rounded-xl transition-colors text-center">
             Join the waitlist
           </a>
-          <p class="mt-3 text-xs text-gray-400">Price locked for founding members</p>
+          <p class="mt-3 text-xs text-fog/50">Price locked for founding members</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Waitlist -->
-  <section id="waitlist" class="py-24 px-6 bg-gray-950">
-    <div class="max-w-2xl mx-auto text-center">
+  <!-- ══════════════════════════════ WAITLIST ══════════════════════════════════ -->
+  <section id="waitlist" class="py-24 px-6 relative overflow-hidden" style="background:#0B0C1E;">
+    <div class="absolute inset-0" style="background:radial-gradient(ellipse at 50% 0%, rgba(124,58,237,0.2) 0%, transparent 65%); pointer-events:none;"></div>
+    <div class="relative max-w-2xl mx-auto text-center">
+      <!-- logo mark large -->
+      <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-violet-600 mb-8 glow-violet">
+        <svg viewBox="0 0 36 36" fill="none" xmlns="https://www.w3.org/2000/svg" class="w-10 h-10">
+          <path d="M18 4 L22 18 L18 15 L14 18 Z" fill="#FFFFFF"/>
+          <path d="M18 32 L14 18 L18 21 L22 18 Z" fill="rgba(255,255,255,0.35)"/>
+          <circle cx="18" cy="18" r="2.5" fill="#F97316"/>
+        </svg>
+      </div>
       <h2 class="text-4xl md:text-5xl font-black leading-tight text-white mb-4">
         Ready to stop stitching tools together?
       </h2>
-      <p class="text-xl text-gray-400 mb-10">
+      <p class="text-fog mb-10">
         Join the waitlist. We'll reach out when your spot is ready.
       </p>
-      <form
-        id="waitlist-form"
-        onsubmit="handleSubmit(event)"
-        class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
-      >
+      <form id="waitlist-form" onsubmit="handleSubmit(event)" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
         <input
           type="email"
           id="email-input"
           required
           placeholder="your@email.com"
           autocomplete="email"
-          class="flex-1 bg-white/10 border border-white/20 text-white placeholder-gray-500 rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
+          class="flex-1 text-white placeholder-fog/40 rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500"
+          style="background:#1A1D38; border:1px solid #252847;"
         />
-        <button
-          type="submit"
-          class="bg-brand-600 hover:bg-brand-500 text-white font-bold px-6 py-3.5 rounded-xl transition-colors text-sm whitespace-nowrap"
-        >
+        <button type="submit" class="bg-violet-600 hover:bg-violet-500 text-white font-bold px-6 py-3.5 rounded-xl transition-colors text-sm whitespace-nowrap">
           Get early access
         </button>
       </form>
       <div id="waitlist-success" class="hidden mt-6">
-        <div class="inline-flex items-center gap-2 bg-green-500/20 border border-green-500/30 text-green-400 text-sm font-semibold px-4 py-2.5 rounded-xl">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+        <div class="inline-flex items-center gap-2 text-sm font-semibold px-4 py-2.5 rounded-xl badge-jade">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
           You're on the list. We'll be in touch.
         </div>
       </div>
-      <p class="mt-6 text-xs text-gray-600">No spam. No daily updates. Just a note when your access is ready.</p>
+      <p class="mt-6 text-xs text-fog/40">No spam. No daily updates. Just a note when your access is ready.</p>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="py-10 px-6 border-t border-gray-100">
+  <!-- ══════════════════════════════ FOOTER ═══════════════════════════════════ -->
+  <footer class="py-10 px-6" style="border-top:1px solid #252847;">
     <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-      <div class="flex items-center gap-2">
-        <div class="w-6 h-6 rounded-md bg-brand-600 flex items-center justify-center">
-          <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-          </svg>
-        </div>
-        <span class="font-bold text-gray-800 text-sm">Founder AI Guide</span>
+      <div class="flex items-center gap-2.5">
+        <svg viewBox="0 0 36 36" fill="none" xmlns="https://www.w3.org/2000/svg" class="w-7 h-7">
+          <rect width="36" height="36" rx="8" fill="#7C3AED"/>
+          <path d="M18 8 L21 18 L18 16 L15 18 Z" fill="#FFFFFF"/>
+          <path d="M18 28 L15 18 L18 20 L21 18 Z" fill="rgba(255,255,255,0.4)"/>
+          <circle cx="18" cy="18" r="2" fill="#F97316"/>
+        </svg>
+        <span class="font-bold text-white text-sm">Founder AI Guide</span>
       </div>
-      <p class="text-xs text-gray-400 text-center">
-        Built for first-time founders. Honest about what it is.
-      </p>
-      <p class="text-xs text-gray-400">&copy; 2025 Founder AI Guide. All rights reserved.</p>
+      <p class="text-xs text-fog/40 text-center">Built for first-time founders. Honest about what it is.</p>
+      <p class="text-xs text-fog/40">&copy; 2025 Founder AI Guide. All rights reserved.</p>
     </div>
   </footer>
 
@@ -531,7 +541,6 @@
       e.preventDefault();
       var email = document.getElementById('email-input').value;
       if (!email) return;
-      // In production, replace this with your actual form endpoint
       document.getElementById('waitlist-form').style.display = 'none';
       document.getElementById('waitlist-success').classList.remove('hidden');
     }
