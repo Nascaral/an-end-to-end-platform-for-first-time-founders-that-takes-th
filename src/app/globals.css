@@ -1,3 +1,38 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  }
+}
+
+@layer utilities {
+  .gradient-brand {
+    background: linear-gradient(135deg, #C64A2A 0%, #E8703A 40%, #F4A261 70%, #C64A2A 100%);
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #C64A2A 0%, #E8703A 50%, #F4A261 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-hero {
+    background: linear-gradient(160deg, #FFF8F6 0%, #F6DCD5 30%, #FDEEE8 60%, #FFFFFF 100%);
+  }
+
+  .gradient-cta {
+    background: linear-gradient(135deg, #C64A2A 0%, #E8703A 50%, #F4A261 100%);
+  }
+}

@@ -1,13 +1,13 @@
-# Founder Guide — Marketing Site
+# Founder AI Guide — Website
 
-Next.js 14 App Router marketing website for Founder Guide.
+Next.js 14 App Router marketing site for FounderAI Guide.
 
 ## Stack
 
-- Next.js 14 (App Router)
-- TypeScript
-- Tailwind CSS
-- Google Fonts: Space Grotesk + Inter
+- **Next.js 14** (App Router)
+- **TypeScript**
+- **Tailwind CSS 3**
+- **Google Fonts** (Space Grotesk + Inter)
 
 ## Getting started
 
@@ -15,29 +15,22 @@ Next.js 14 App Router marketing website for Founder Guide.
 # 1. Install dependencies
 npm install
 
-# 2. Copy environment variables
+# 2. Copy environment file (no values required for the static site)
 cp .env.example .env.local
 
-# 3. Add your logo
-# Place your logo at: public/logo.png
-
-# 4. Run the dev server (http://localhost:3000)
+# 3. Run locally (http://localhost:3000)
 npm run dev
 ```
 
-## Build for production
+## Production build
 
 ```bash
 npm run build
-npm run start
+npm start
 ```
-
-## Environment variables
-
-See `.env.example`. No secrets are required for the static marketing site.
 
 ## Notes
 
-- All sections are in `components/` — edit each independently.
-- Brand colors are defined in `tailwind.config.ts` and `globals.css`.
-- Logo is referenced from `public/logo.png` — replace with your actual asset.
+- Place your actual `logo.png` file in `public/logo.png` — the placeholder in this repo is empty.
+- No backend or database is configured; this is a pure marketing site with Next.js route handlers available for future form/waitlist endpoints.
+- The site is intentionally honest about unvalidated assumptions per the validation snapshot (PIVOT verdict at build time). Copy does not paper over the hidden assumptions surfaced during validation.
