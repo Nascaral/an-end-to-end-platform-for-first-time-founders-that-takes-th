@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer components {
+  .gradient-text {
+    background: linear-gradient(135deg, #C64A2A 0%, #E8763A 50%, #F6A05A 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-brand bg-accent text-on-accent font-heading font-semibold text-sm tracking-tight transition-all hover:opacity-90 active:scale-95;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-brand border border-ink/20 text-ink font-heading font-semibold text-sm tracking-tight bg-transparent transition-all hover:border-ink/40 active:scale-95;
+  }
+  .btn-gradient {
+    @apply inline-flex items-center justify-center gap-2 px-8 py-4 rounded-brand font-heading font-semibold text-base tracking-tight text-white transition-all hover:opacity-90 active:scale-95;
+    background: linear-gradient(135deg, #C64A2A 0%, #E8763A 50%, #F6A05A 100%);
+  }
+}
