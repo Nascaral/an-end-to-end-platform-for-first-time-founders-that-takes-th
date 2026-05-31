@@ -1,50 +1,60 @@
 const cases = [
   {
-    persona: 'The idea-stage solo founder',
-    scenario: 'You have a note-app idea you think is different. You submit it, get a PIVOT verdict with three named competitors and their review data. Now you know what gap is actually open — before writing a line of code.',
-    stage: 'Validation',
+    persona: 'The idea person',
+    tagline: 'Has an idea, hasn\'t talked to a single customer',
+    before: 'Googles competitors, reads a few blog posts, gets ChatGPT to tell them it\'s a great idea, starts building.',
+    after: 'Logs 3 customer conversations before writing a line of code. Discovers the real pain is adjacent to their original hypothesis. Builds the right thing.',
+    result: 'Ships an MVP customers actually asked for.',
   },
   {
-    persona: 'The builder who skips the interviews',
-    scenario: "You know you should talk to customers. You never do. Here, the build button is gated until you log real conversations — and logging them takes 3 minutes. You do them because the UX makes skipping feel worse than doing.",
-    stage: 'Customer Discovery',
+    persona: 'The over-researcher founder',
+    tagline: 'Collects data, never moves to build',
+    before: 'Buys a market research report, makes a spreadsheet, adds five more research tabs, never starts.',
+    after: 'The platform locks the research stage and prompts for conversations. Verdict moves. Build spec is generated. First commit happens.',
+    result: 'Exits the research loop with a real deliverable.',
   },
   {
-    persona: 'The validated founder ready to build',
-    scenario: "You've done five interviews, the verdict moved to BUILD, and now you need to brief Lovable. Instead of copy-pasting your notes, one click generates a structured spec in the language your AI builder understands.",
-    stage: 'Build Handoff',
+    persona: 'The serial pivoter',
+    tagline: 'Pivots at the first sign of friction',
+    before: 'Pivots when the first customer says "interesting but not for me" — throws out all prior learning.',
+    after: 'The platform\'s memory shows which assumptions were tested, which held, and which broke. Pivot is scoped to what\'s actually unproven.',
+    result: 'Smarter pivots. Less wasted momentum.',
   },
 ]
 
 export default function UseCases() {
   return (
-    <section className="py-24 bg-background">
+    <section className="py-24 bg-white">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="font-heading text-4xl lg:text-5xl font-700 tracking-tight text-ink mb-4">
-            Built for the
-            <span className="gradient-text"> moments that matter.</span>
+          <p className="text-xs uppercase tracking-widest text-muted font-medium mb-3">Who this is for</p>
+          <h2 className="font-heading text-4xl md:text-5xl font-semibold text-ink tracking-tight mb-4">
+            First-time founders, specifically
           </h2>
-          <p className="text-muted text-lg max-w-xl mx-auto">
-            Three situations where five fragmented tools fail you — and one platform doesn't.
+          <p className="text-lg text-muted max-w-xl mx-auto leading-relaxed">
+            We\'re not trying to help everyone. We\'re trying to help the solo founder who hasn\'t done this before and doesn\'t have a cofounder to pressure-test their thinking.
           </p>
         </div>
 
-        <div className="space-y-6">
+        <div className="grid md:grid-cols-3 gap-6">
           {cases.map((c, i) => (
-            <div
-              key={c.persona}
-              className="flex flex-col md:flex-row gap-6 items-start p-8 rounded-[16px] border border-[#14130F]/8 bg-surface hover:border-accent/20 transition-colors"
-            >
-              <div className="flex-shrink-0">
-                <div className="inline-flex items-center px-3 py-1.5 rounded-full gradient-cta text-on-accent text-xs font-semibold">{c.stage}</div>
+            <div key={i} className="bg-surface rounded-brand-lg border border-gray-100 overflow-hidden">
+              <div className="p-6 border-b border-gray-100">
+                <span className="inline-block bg-accent-soft text-accent text-xs font-medium px-3 py-1 rounded-full mb-3">{c.persona}</span>
+                <p className="font-heading text-sm font-semibold text-ink leading-snug">{c.tagline}</p>
               </div>
-              <div className="flex-1">
-                <h3 className="font-heading text-xl font-600 text-ink mb-2">{c.persona}</h3>
-                <p className="text-muted leading-relaxed">{c.scenario}</p>
-              </div>
-              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-accent-soft flex items-center justify-center text-accent font-bold text-sm">
-                {i + 1}
+              <div className="p-6 space-y-4">
+                <div>
+                  <p className="text-xs font-medium uppercase tracking-widest text-muted mb-1">Before</p>
+                  <p className="text-sm text-muted leading-relaxed">{c.before}</p>
+                </div>
+                <div>
+                  <p className="text-xs font-medium uppercase tracking-widest text-accent mb-1">With Launchpath</p>
+                  <p className="text-sm text-ink leading-relaxed">{c.after}</p>
+                </div>
+                <div className="bg-white border border-accent/20 rounded-brand p-3">
+                  <p className="text-xs font-medium text-ink">→ {c.result}</p>
+                </div>
               </div>
             </div>
           ))}

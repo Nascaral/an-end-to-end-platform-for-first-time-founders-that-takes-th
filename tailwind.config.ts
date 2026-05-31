@@ -1,7 +1,11 @@
 import type { Config } from 'tailwindcss'
 
 const config: Config = {
-  content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
+  content: [
+    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
   theme: {
     extend: {
       colors: {
@@ -21,9 +25,12 @@ const config: Config = {
         brand: '8px',
         'brand-lg': '16px',
       },
+      backgroundImage: {
+        'gradient-brand': 'linear-gradient(135deg, #C64A2A 0%, #E8714A 40%, #F4A483 100%)',
+        'gradient-hero': 'linear-gradient(135deg, #FFF5F2 0%, #FAFAFA 60%, #F0EBE8 100%)',
+      },
     },
   },
   plugins: [],
 }
-
 export default config

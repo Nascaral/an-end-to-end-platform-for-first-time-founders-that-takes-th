@@ -1,65 +1,78 @@
-const steps = [
+const stages = [
   {
-    num: '01',
-    title: 'Submit your raw idea',
-    body: 'Describe what you want to build in plain English. We run it against market signals, competitor maps, and known failure patterns — and give you a BUILD / KILL / PIVOT verdict with sources. No cheerleading.',
-    tag: 'Validation',
+    number: '01',
+    label: 'Validate',
+    title: 'Brutally honest BUILD / KILL / PIVOT verdict',
+    description:
+      'No cheerleading. Launchpath sources market signals, stress-tests your assumptions, and refuses to mark your idea validated until you log real customer conversations. Not "does a market exist" — does your specific solution fit a real workflow.',
+    callout: 'Verdict stays UNVALIDATED until conversations are logged.',
+    color: 'bg-accent-soft',
+    textColor: 'text-accent',
   },
   {
-    num: '02',
-    title: 'Log real customer conversations',
-    body: "The verdict is locked until you prove workflow fit. Every conversation you log visibly moves the score. We track what customers actually said — their words, their workarounds, their pain — not just whether you talked to people.",
-    tag: 'Customer Discovery',
+    number: '02',
+    label: 'Converse',
+    title: 'Customer conversations that visibly move the verdict',
+    description:
+      'Log your actual conversations with structured Mom Test prompts built in. Every conversation you log shifts your validation score in real time. The platform tracks what customers said, what they confirmed, and what remains unproven.',
+    callout: 'The verdict loop closes only when real evidence lands.',
+    color: 'bg-orange-50',
+    textColor: 'text-orange-600',
   },
   {
-    num: '03',
-    title: 'Generate your build spec',
-    body: "Once fit is confirmed, everything you learned — customer language, confirmed pain points, identified workflow gaps — gets compiled into a structured build spec. Ship it to Lovable, v0, or Bolt with one click.",
-    tag: 'Build Handoff',
+    number: '03',
+    label: 'Build',
+    title: 'Your MVP spec built from what validation actually found',
+    description:
+      'When you hit BUILD, Launchpath compiles your validated customer language, confirmed pain points, and identified workflow gaps into a structured build spec — and hands it directly to your AI builder. The builder knows what you learned, not just what you hoped.',
+    callout: 'No context lost at the handoff. Your spec is the memory.',
+    color: 'bg-stone-50',
+    textColor: 'text-stone-600',
   },
   {
-    num: '04',
-    title: 'Get guidance that knows your history',
-    body: "GTM strategy, investor pitch coaching, and pricing guidance that actually references what your customers said in Stage 2. Not generic advice — advice grounded in your specific validated context.",
-    tag: 'Ongoing Guidance',
+    number: '04',
+    label: 'Grow',
+    title: 'GTM, pitch, and fundraising guidance that knows your whole story',
+    description:
+      'Post-launch guidance — positioning, cold outreach, pitch decks, investor messaging — informed by every conversation you logged, every pivot you made, every build decision. Not generic startup advice. Your startup\'s advice.',
+    callout: 'Context-aware from day one to series seed.',
+    color: 'bg-accent-soft',
+    textColor: 'text-accent',
   },
 ]
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="py-24 bg-background">
+    <section id="how-it-works" className="py-24 bg-white">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="font-heading text-4xl lg:text-5xl font-700 tracking-tight text-ink mb-4">
-            One platform. Four stages.
-            <br />
-            <span className="gradient-text">Zero context lost.</span>
+          <p className="text-xs uppercase tracking-widest text-muted font-medium mb-3">The journey</p>
+          <h2 className="font-heading text-4xl md:text-5xl font-semibold text-ink tracking-tight mb-4">
+            Four stages. One memory.
           </h2>
-          <p className="text-muted text-lg max-w-xl mx-auto">
-            Every stage feeds the next. Nothing gets forgotten between steps.
+          <p className="text-lg text-muted max-w-xl mx-auto leading-relaxed">
+            Each stage feeds the next. Nothing is forgotten between steps — that&apos;s the product.
           </p>
         </div>
 
-        <div className="relative">
-          {/* Vertical connector line */}
-          <div className="hidden lg:block absolute left-[3.25rem] top-8 bottom-8 w-px bg-gradient-to-b from-accent via-[#F4A261] to-transparent"></div>
-
-          <div className="space-y-10">
-            {steps.map((step) => (
-              <div key={step.num} className="flex flex-col lg:flex-row gap-6 lg:gap-10 items-start">
-                <div className="flex-shrink-0 flex items-center gap-4">
-                  <div className="w-[6.5rem] h-[6.5rem] rounded-[16px] gradient-cta flex items-center justify-center shadow-md shadow-accent/20">
-                    <span className="font-heading text-2xl font-700 text-on-accent">{step.num}</span>
-                  </div>
-                </div>
-                <div className="flex-1 pt-2 lg:pt-4">
-                  <div className="inline-flex items-center px-2.5 py-1 rounded-full bg-accent-soft text-accent text-xs font-semibold mb-2">{step.tag}</div>
-                  <h3 className="font-heading text-2xl font-600 tracking-tight text-ink mb-2">{step.title}</h3>
-                  <p className="text-muted leading-relaxed max-w-2xl">{step.body}</p>
+        <div className="space-y-4">
+          {stages.map((stage, i) => (
+            <div key={i} className="grid md:grid-cols-12 gap-6 items-start p-6 md:p-8 bg-surface rounded-brand-lg border border-gray-100 hover:border-gray-200 transition-colors">
+              <div className="md:col-span-1 flex md:flex-col items-center md:items-start gap-3">
+                <span className="font-heading text-3xl font-semibold text-gray-200">{stage.number}</span>
+              </div>
+              <div className="md:col-span-8">
+                <span className={`inline-block text-xs font-medium uppercase tracking-widest px-2 py-1 rounded-full mb-3 ${stage.color} ${stage.textColor}`}>{stage.label}</span>
+                <h3 className="font-heading text-xl font-semibold text-ink mb-3 tracking-tight">{stage.title}</h3>
+                <p className="text-sm text-muted leading-relaxed">{stage.description}</p>
+              </div>
+              <div className="md:col-span-3">
+                <div className="bg-white rounded-brand border-l-2 border-accent p-4">
+                  <p className="text-xs text-ink font-medium leading-relaxed">{stage.callout}</p>
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

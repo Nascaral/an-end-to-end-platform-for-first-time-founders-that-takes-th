@@ -1,116 +1,119 @@
 const tiers = [
   {
-    name: 'Starter',
+    name: 'Validate',
     price: 'Free',
-    period: '',
-    description: 'Validate one idea. See what honest feedback feels like.',
+    sub: 'No credit card',
+    description: 'Test the honest validation loop. See what a real verdict looks like.',
     features: [
-      '1 idea workspace',
-      'BUILD / KILL / PIVOT verdict',
-      'Up to 3 customer conversation logs',
-      'Basic validation report',
+      '1 active idea',
+      'BUILD/KILL/PIVOT verdict engine',
+      'Up to 3 conversation logs',
+      'Assumption tracking',
+      'Verdict dashboard',
     ],
     cta: 'Start free',
     featured: false,
   },
   {
-    name: 'Founder',
+    name: 'Build',
     price: '$19',
-    period: '/mo',
-    description: 'The full journey — validation through build handoff.',
+    sub: 'per month',
+    description: 'Full validation-to-build handoff for founders who are serious about shipping.',
     features: [
-      'Unlimited idea workspaces',
-      'Unlimited conversation logs',
-      'Full sourced validation reports',
-      'One-click build spec generator',
-      'Lovable, v0 & Bolt handoff',
-      'Context-aware GTM guidance',
+      'Unlimited ideas & conversations',
+      'Full verdict engine with sourced reasoning',
+      'Validation-to-build spec export',
+      'AI builder prompt generation (Lovable, v0, Bolt)',
+      'Persistent founder memory',
+      'GTM & pitch guidance',
+      'Priority support',
     ],
-    cta: 'Start Founder plan',
+    cta: 'Get started',
     featured: true,
   },
   {
-    name: 'Pro',
+    name: 'Scale',
     price: '$29',
-    period: '/mo',
-    description: 'For founders moving fast with multiple ideas or a co-founder.',
+    sub: 'per month',
+    description: 'For founders actively fundraising or launching to market.',
     features: [
-      'Everything in Founder',
-      '2 seats included',
-      'Priority AI processing',
-      'Pitch deck coaching (beta)',
-      'Investor narrative generator',
-      'Early access to new stages',
+      'Everything in Build',
+      'Investor pitch context generator',
+      'Cold outreach templates from validation data',
+      'Positioning doc generation',
+      'Fundraising narrative builder',
+      'Early access to new features',
     ],
-    cta: 'Start Pro plan',
+    cta: 'Get started',
     featured: false,
   },
 ]
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="py-24 bg-background">
+    <section id="pricing" className="py-24 bg-surface">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="font-heading text-4xl lg:text-5xl font-700 tracking-tight text-ink mb-4">
-            Simple pricing.
-            <span className="gradient-text"> Cancel anytime.</span>
+          <p className="text-xs uppercase tracking-widest text-muted font-medium mb-3">Pricing</p>
+          <h2 className="font-heading text-4xl md:text-5xl font-semibold text-ink tracking-tight mb-4">
+            Less than one SaaS tool in your current stack
           </h2>
-          <p className="text-muted text-lg max-w-md mx-auto">
-            Less than one month of "good enough" tool subscriptions that don't talk to each other.
+          <p className="text-lg text-muted max-w-xl mx-auto leading-relaxed">
+            The five tools you\'re currently stitching together cost more — and none of them talk to each other.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6 items-start">
-          {tiers.map((tier) => (
+        <div className="grid md:grid-cols-3 gap-6">
+          {tiers.map((tier, i) => (
             <div
-              key={tier.name}
-              className={`rounded-[16px] p-7 border ${
+              key={i}
+              className={`rounded-brand-lg border overflow-hidden flex flex-col ${
                 tier.featured
-                  ? 'border-accent gradient-cta text-on-accent shadow-xl shadow-accent/25 relative'
-                  : 'border-[#14130F]/10 bg-surface'
+                  ? 'bg-ink border-ink shadow-xl scale-105 relative'
+                  : 'bg-white border-gray-200'
               }`}
             >
               {tier.featured && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  <span className="inline-flex px-3 py-1 rounded-full bg-ink text-white text-xs font-semibold">Most popular</span>
+                <div className="bg-accent text-on-accent text-xs font-medium text-center py-2 uppercase tracking-widest">
+                  Most popular
                 </div>
               )}
-              <div className="mb-5">
-                <div className={`text-xs font-semibold uppercase tracking-widest mb-1 ${tier.featured ? 'text-on-accent/70' : 'text-muted'}`}>{tier.name}</div>
-                <div className="flex items-end gap-1">
-                  <span className={`font-heading text-4xl font-700 ${tier.featured ? 'text-on-accent' : 'text-ink'}`}>{tier.price}</span>
-                  {tier.period && <span className={`text-sm pb-1 ${tier.featured ? 'text-on-accent/70' : 'text-muted'}`}>{tier.period}</span>}
+              <div className="p-6 flex-1">
+                <p className={`font-heading font-semibold mb-1 ${ tier.featured ? 'text-white' : 'text-ink'}`}>{tier.name}</p>
+                <div className="flex items-baseline gap-1 mb-1">
+                  <span className={`font-heading text-4xl font-semibold ${ tier.featured ? 'text-white' : 'text-ink'}`}>{tier.price}</span>
+                  {tier.sub !== 'No credit card' && <span className={`text-sm ${ tier.featured ? 'text-gray-400' : 'text-muted'}`}>/{tier.sub}</span>}
                 </div>
-                <p className={`text-sm mt-2 ${tier.featured ? 'text-on-accent/80' : 'text-muted'}`}>{tier.description}</p>
+                <p className={`text-xs mb-1 ${ tier.featured ? 'text-gray-400' : 'text-muted'}`}>{tier.price === 'Free' ? tier.sub : ''}</p>
+                <p className={`text-sm leading-relaxed mb-6 ${ tier.featured ? 'text-gray-300' : 'text-muted'}`}>{tier.description}</p>
+                <ul className="space-y-2.5 mb-8">
+                  {tier.features.map((f, j) => (
+                    <li key={j} className="flex items-start gap-2">
+                      <svg className={`w-4 h-4 flex-shrink-0 mt-0.5 ${ tier.featured ? 'text-accent' : 'text-accent'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                      <span className={`text-sm ${ tier.featured ? 'text-gray-300' : 'text-muted'}`}>{f}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-
-              <ul className="space-y-2.5 mb-7">
-                {tier.features.map((f) => (
-                  <li key={f} className={`flex items-start gap-2 text-sm ${tier.featured ? 'text-on-accent/90' : 'text-ink/80'}`}>
-                    <svg className={`w-4 h-4 flex-shrink-0 mt-0.5 ${tier.featured ? 'text-on-accent' : 'text-accent'}`} viewBox="0 0 16 16" fill="none">
-                      <path d="M3 8l3.5 3.5L13 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                    {f}
-                  </li>
-                ))}
-              </ul>
-
-              <a
-                href="#"
-                className={`block w-full py-3 rounded-[8px] text-sm font-semibold text-center transition-all ${
-                  tier.featured
-                    ? 'bg-on-accent text-accent hover:bg-accent-soft'
-                    : 'bg-accent text-on-accent hover:bg-accent/90'
-                }`}
-              >
-                {tier.cta}
-              </a>
+              <div className="px-6 pb-6">
+                <a
+                  href="#"
+                  className={`block w-full text-center py-3 rounded-brand text-sm font-medium transition-colors ${
+                    tier.featured
+                      ? 'bg-accent text-on-accent hover:bg-opacity-90'
+                      : 'bg-accent-soft text-accent hover:bg-accent hover:text-on-accent'
+                  }`}
+                >
+                  {tier.cta}
+                </a>
+              </div>
             </div>
           ))}
         </div>
 
-        <p className="text-center text-xs text-muted mt-8">No annual lock-in. Cancel any month. Prices in USD.</p>
+        <p className="text-center text-xs text-muted mt-8">
+          All plans include the honest verdict engine. No hidden upsells for the core validation loop.
+        </p>
       </div>
     </section>
   )
