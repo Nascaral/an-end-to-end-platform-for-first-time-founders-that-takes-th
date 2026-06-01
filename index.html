@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>An end-to-end platform for first-time founders that takes them from raw idea to launched MVP</title>
-  <meta name="description" content="Stop stitching together five tools that each forget what the others learned. One platform, one memory, from raw idea to launched MVP — validation, build spec, and ongoing guidance that actually knows your history." />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" />
+  <title>An end-to-end platform for first-time founders that takes them from raw idea ...</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -27,603 +26,473 @@
           borderRadius: {
             brand: '8px',
             card: '12px',
-            pill: '9999px',
+            xl2: '16px',
           },
-          backgroundImage: {
-            'gradient-hero': 'linear-gradient(135deg, #F6DCD5 0%, #FFFFFF 50%, #F6DCD5 100%)',
-            'gradient-accent': 'linear-gradient(135deg, #C64A2A 0%, #E8724A 100%)',
-            'gradient-warm': 'linear-gradient(135deg, #C64A2A 0%, #D9603E 50%, #E8724A 100%)',
-          },
-        },
-      },
-    };
+        }
+      }
+    }
   </script>
   <style>
-    body {
-      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      color: #14130F;
-      background: #FFFFFF;
-      -webkit-font-smoothing: antialiased;
-    }
-    h1, h2, h3, h4, h5, h6, .font-heading {
-      font-family: 'Space Grotesk', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    }
+    body { font-family: 'Inter', system-ui, sans-serif; background: #FFFFFF; color: #14130F; }
+    h1,h2,h3,h4,h5 { font-family: 'Space Grotesk', system-ui, sans-serif; }
     .gradient-text {
-      background: linear-gradient(135deg, #C64A2A 0%, #E8724A 100%);
+      background: linear-gradient(135deg, #C64A2A 0%, #e07a5f 50%, #C64A2A 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-    .hero-wash {
-      background: linear-gradient(160deg, #F6DCD5 0%, #FFFFFF 45%, #FAFAFA 100%);
+    .hero-gradient {
+      background: linear-gradient(135deg, #fff5f3 0%, #F6DCD5 40%, #fde8d8 70%, #fff 100%);
     }
     .cta-gradient {
-      background: linear-gradient(135deg, #C64A2A 0%, #E8724A 100%);
+      background: linear-gradient(135deg, #C64A2A 0%, #a83820 100%);
     }
-    .card-hover {
-      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    .featured-card-gradient {
+      background: linear-gradient(145deg, #C64A2A 0%, #8b2a18 100%);
     }
-    .card-hover:hover {
-      box-shadow: 0 8px 32px rgba(198, 74, 42, 0.12);
-      transform: translateY(-2px);
-    }
-    .nav-link {
-      transition: color 0.15s ease;
-    }
-    .nav-link:hover {
-      color: #C64A2A;
-    }
-    .btn-primary {
-      background: linear-gradient(135deg, #C64A2A 0%, #E8724A 100%);
-      color: #FFFFFF;
-      border-radius: 8px;
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 600;
-      transition: opacity 0.15s ease, transform 0.15s ease;
-    }
-    .btn-primary:hover {
-      opacity: 0.9;
-      transform: translateY(-1px);
-    }
-    .btn-secondary {
-      background: transparent;
-      color: #14130F;
-      border: 1.5px solid #E5E3E0;
-      border-radius: 8px;
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 500;
-      transition: border-color 0.15s ease, color 0.15s ease;
-    }
-    .btn-secondary:hover {
-      border-color: #C64A2A;
-      color: #C64A2A;
-    }
-    .step-line {
-      background: linear-gradient(180deg, #C64A2A 0%, #F6DCD5 100%);
-    }
-    .pricing-featured {
-      background: #14130F;
-      color: #FFFFFF;
-    }
-    .section-divider {
-      border-color: #F0EDEA;
+    .step-line::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 100%;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, #C64A2A, #F6DCD5);
+      transform: translateY(-50%);
     }
   </style>
 </head>
-<body>
+<body class="antialiased">
 
-<!-- NAV -->
-<nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-[#F0EDEA]">
-  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-    <a href="#" class="flex items-center gap-2">
-      <img src="public/logo.png" alt="Logo" class="h-8 w-auto" />
-    </a>
-    <div class="hidden md:flex items-center gap-8">
-      <a href="#how-it-works" class="nav-link text-sm font-medium text-[#767573]">How it works</a>
-      <a href="#features" class="nav-link text-sm font-medium text-[#767573]">Features</a>
-      <a href="#pricing" class="nav-link text-sm font-medium text-[#767573]">Pricing</a>
-    </div>
-    <div class="flex items-center gap-3">
-      <a href="#" class="hidden md:block text-sm font-medium text-[#767573] nav-link">Sign in</a>
-      <a href="#pricing" class="btn-primary px-5 py-2.5 text-sm">Get early access</a>
-    </div>
-  </div>
-</nav>
-
-<!-- HERO -->
-<section class="hero-wash pt-20 pb-28 px-6">
-  <div class="max-w-6xl mx-auto">
-    <div class="max-w-3xl">
-      <div class="inline-flex items-center gap-2 bg-[#F6DCD5] text-[#C64A2A] text-xs font-semibold px-3 py-1.5 rounded-pill mb-8 font-heading tracking-wide uppercase">
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="4" fill="#C64A2A"/></svg>
-        Early access open
+  <!-- NAV -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2">
+        <img src="public/logo.png" alt="An end-to-end platform for first-time founders that takes them from raw idea ..." class="h-8 w-auto" />
+      </a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#how-it-works" class="text-sm font-medium text-muted hover:text-ink transition-colors">How it works</a>
+        <a href="#features" class="text-sm font-medium text-muted hover:text-ink transition-colors">Features</a>
+        <a href="#pricing" class="text-sm font-medium text-muted hover:text-ink transition-colors">Pricing</a>
       </div>
-      <h1 class="font-heading text-5xl md:text-6xl lg:text-7xl font-700 leading-tight tracking-tight text-[#14130F] mb-6" style="font-weight:700;letter-spacing:-0.03em;">
-        From raw idea to<br />
-        <span class="gradient-text">launched MVP</span> —<br />
-        one memory, one place.
-      </h1>
-      <p class="text-xl text-[#767573] leading-relaxed mb-10 max-w-2xl" style="font-family:'Inter',sans-serif;">
-        The first platform that carries a single continuous context from idea validation through customer conversations, build spec, and growth guidance. Stop re-explaining your startup to tools that immediately forget you.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4">
-        <a href="#pricing" class="btn-primary px-8 py-4 text-base text-center">Start for free — no card required</a>
-        <a href="#how-it-works" class="btn-secondary px-8 py-4 text-base text-center">See how it works</a>
-      </div>
-      <p class="mt-6 text-sm text-[#767573]">
-        $19/mo after trial &nbsp;&middot;&nbsp; Cancel any time &nbsp;&middot;&nbsp; Built for solo founders
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- PAIN / PROBLEM BAND -->
-<section class="bg-[#FAFAFA] border-y border-[#F0EDEA] py-16 px-6">
-  <div class="max-w-6xl mx-auto">
-    <p class="font-heading text-xs font-600 uppercase tracking-widest text-[#C64A2A] mb-8">The fragmentation problem</p>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-      <div>
-        <h2 class="font-heading text-3xl md:text-4xl font-700 text-[#14130F] leading-tight mb-5" style="font-weight:700;letter-spacing:-0.02em;">
-          Five good tools that never talk to each other.
-        </h2>
-        <p class="text-[#767573] text-lg leading-relaxed mb-6">
-          Today you use ChatGPT to brainstorm (it cheerleads everything), a data report for market size, The Mom Test for interview discipline (if you stay disciplined), Lovable or v0 to build, and blog posts for GTM. Every tool resets to zero. Nothing remembers what you learned.
-        </p>
-        <p class="text-[#767573] text-lg leading-relaxed">
-          The fragmentation isn't a minor inconvenience — every context switch is a leaky handoff. The build doesn't reflect the validation. The pitch doesn't reflect what customers actually said. The guidance doesn't know your constraints.
-        </p>
-      </div>
-      <div class="grid grid-cols-2 gap-4">
-        <div class="bg-white border border-[#F0EDEA] rounded-card p-5 card-hover">
-          <p class="font-heading text-sm font-600 text-[#14130F] mb-1">ChatGPT</p>
-          <p class="text-xs text-[#767573]">Brainstorm / validate</p>
-          <div class="mt-3 text-xs text-[#C64A2A] font-medium">Cheerleads everything</div>
-        </div>
-        <div class="bg-white border border-[#F0EDEA] rounded-card p-5 card-hover">
-          <p class="font-heading text-sm font-600 text-[#14130F] mb-1">Market reports</p>
-          <p class="text-xs text-[#767573]">Demand signals</p>
-          <div class="mt-3 text-xs text-[#C64A2A] font-medium">Stops at market size</div>
-        </div>
-        <div class="bg-white border border-[#F0EDEA] rounded-card p-5 card-hover">
-          <p class="font-heading text-sm font-600 text-[#14130F] mb-1">The Mom Test</p>
-          <p class="text-xs text-[#767573]">Interview discipline</p>
-          <div class="mt-3 text-xs text-[#C64A2A] font-medium">Only if you stay disciplined</div>
-        </div>
-        <div class="bg-white border border-[#F0EDEA] rounded-card p-5 card-hover">
-          <p class="font-heading text-sm font-600 text-[#14130F] mb-1">Lovable / v0 / Bolt</p>
-          <p class="text-xs text-[#767573]">Build the MVP</p>
-          <div class="mt-3 text-xs text-[#C64A2A] font-medium">Ignores your validation</div>
-        </div>
-        <div class="col-span-2 bg-[#F6DCD5] border border-[#EDD0C6] rounded-card p-5">
-          <p class="font-heading text-sm font-600 text-[#14130F] mb-1">Result</p>
-          <p class="text-xs text-[#767573]">Five isolated snapshots, zero shared memory. Each handoff loses context. Your build never reflects what your customers actually told you.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- HOW IT WORKS -->
-<section id="how-it-works" class="bg-white py-24 px-6">
-  <div class="max-w-6xl mx-auto">
-    <div class="mb-16">
-      <p class="font-heading text-xs font-600 uppercase tracking-widest text-[#C64A2A] mb-4">How it works</p>
-      <h2 class="font-heading text-4xl md:text-5xl font-700 text-[#14130F] leading-tight" style="font-weight:700;letter-spacing:-0.02em;">
-        Four stages, one continuous memory.
-      </h2>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-
-      <!-- Stage 1 -->
-      <div class="bg-[#FAFAFA] border border-[#F0EDEA] rounded-card p-7 card-hover">
-        <div class="flex items-center gap-3 mb-5">
-          <div class="w-9 h-9 cta-gradient rounded-brand flex items-center justify-center flex-shrink-0">
-            <span class="text-white text-sm font-heading font-700">1</span>
-          </div>
-          <p class="font-heading text-xs font-600 uppercase tracking-wide text-[#767573]">Validate</p>
-        </div>
-        <h3 class="font-heading text-lg font-600 text-[#14130F] mb-3" style="font-weight:600;">Brutally honest BUILD / KILL / PIVOT</h3>
-        <p class="text-sm text-[#767573] leading-relaxed">
-          Sourced research that refuses to cheerlead. No idea is marked validated until you log real customer conversations. The verdict updates as you talk to people.
-        </p>
-        <div class="mt-5 inline-block bg-[#F6DCD5] text-[#C64A2A] text-xs font-semibold px-3 py-1 rounded-pill">No rubber-stamping</div>
-      </div>
-
-      <!-- Stage 2 -->
-      <div class="bg-[#FAFAFA] border border-[#F0EDEA] rounded-card p-7 card-hover">
-        <div class="flex items-center gap-3 mb-5">
-          <div class="w-9 h-9 cta-gradient rounded-brand flex items-center justify-center flex-shrink-0">
-            <span class="text-white text-sm font-heading font-700">2</span>
-          </div>
-          <p class="font-heading text-xs font-600 uppercase tracking-wide text-[#767573]">Conversation Log</p>
-        </div>
-        <h3 class="font-heading text-lg font-600 text-[#14130F] mb-3" style="font-weight:600;">Logging moves the verdict</h3>
-        <p class="text-sm text-[#767573] leading-relaxed">
-          Every customer conversation you log visibly shifts the BUILD / KILL / PIVOT score. The platform distills exact customer language and confirmed pain points as you go.
-        </p>
-        <div class="mt-5 inline-block bg-[#F6DCD5] text-[#C64A2A] text-xs font-semibold px-3 py-1 rounded-pill">Evidence-based progress</div>
-      </div>
-
-      <!-- Stage 3 -->
-      <div class="bg-[#FAFAFA] border border-[#F0EDEA] rounded-card p-7 card-hover">
-        <div class="flex items-center gap-3 mb-5">
-          <div class="w-9 h-9 cta-gradient rounded-brand flex items-center justify-center flex-shrink-0">
-            <span class="text-white text-sm font-heading font-700">3</span>
-          </div>
-          <p class="font-heading text-xs font-600 uppercase tracking-wide text-[#767573]">Build Handoff</p>
-        </div>
-        <h3 class="font-heading text-lg font-600 text-[#14130F] mb-3" style="font-weight:600;">Validation becomes the build spec</h3>
-        <p class="text-sm text-[#767573] leading-relaxed">
-          Customer language, workflow gaps, and confirmed pain points get packaged into a structured spec that flows directly into your AI builder — so the MVP reflects what you actually learned.
-        </p>
-        <div class="mt-5 inline-block bg-[#F6DCD5] text-[#C64A2A] text-xs font-semibold px-3 py-1 rounded-pill">No lost context</div>
-      </div>
-
-      <!-- Stage 4 -->
-      <div class="bg-[#FAFAFA] border border-[#F0EDEA] rounded-card p-7 card-hover">
-        <div class="flex items-center gap-3 mb-5">
-          <div class="w-9 h-9 cta-gradient rounded-brand flex items-center justify-center flex-shrink-0">
-            <span class="text-white text-sm font-heading font-700">4</span>
-          </div>
-          <p class="font-heading text-xs font-600 uppercase tracking-wide text-[#767573]">Ongoing Guidance</p>
-        </div>
-        <h3 class="font-heading text-lg font-600 text-[#14130F] mb-3" style="font-weight:600;">GTM, pitch, and raise — aware of your whole history</h3>
-        <p class="text-sm text-[#767573] leading-relaxed">
-          Context-aware guidance for go-to-market, investor pitch, and fundraising that knows your validated niche, your build constraints, and what customers said.
-        </p>
-        <div class="mt-5 inline-block bg-[#F6DCD5] text-[#C64A2A] text-xs font-semibold px-3 py-1 rounded-pill">Full-stack memory</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FEATURES -->
-<section id="features" class="bg-[#FAFAFA] border-y border-[#F0EDEA] py-24 px-6">
-  <div class="max-w-6xl mx-auto">
-    <div class="mb-16">
-      <p class="font-heading text-xs font-600 uppercase tracking-widest text-[#C64A2A] mb-4">Core capabilities</p>
-      <h2 class="font-heading text-4xl md:text-5xl font-700 text-[#14130F] leading-tight max-w-2xl" style="font-weight:700;letter-spacing:-0.02em;">
-        Everything a solo founder needs, in one shared context.
-      </h2>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-      <div class="bg-white border border-[#F0EDEA] rounded-card p-8 card-hover">
-        <div class="w-10 h-10 bg-[#F6DCD5] rounded-brand flex items-center justify-center mb-6">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#C64A2A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l-6 6M15 4a5 5 0 010 7l-3-3a5 5 0 000-7"/><circle cx="15" cy="5" r="2"/></svg>
-        </div>
-        <h3 class="font-heading text-lg font-600 text-[#14130F] mb-3" style="font-weight:600;">Honest validation — not hype</h3>
-        <p class="text-sm text-[#767573] leading-relaxed">Sourced market research, competitive context, and a BUILD / KILL / PIVOT score that won't budge until you back it with real conversations. No dopamine loop, no false positives.</p>
-      </div>
-
-      <div class="bg-white border border-[#F0EDEA] rounded-card p-8 card-hover">
-        <div class="w-10 h-10 bg-[#F6DCD5] rounded-brand flex items-center justify-center mb-6">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#C64A2A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a2 2 0 010 4h-1M1 8h1m13 0H5a2 2 0 00-2 2v0a2 2 0 002 2h10"/><circle cx="5" cy="10" r="2"/></svg>
-        </div>
-        <h3 class="font-heading text-lg font-600 text-[#14130F] mb-3" style="font-weight:600;">Guided conversation logging</h3>
-        <p class="text-sm text-[#767573] leading-relaxed">Structured prompts for customer interviews inspired by Mom Test principles. Log what you heard, and watch the verdict update with each real signal — not synthetic confidence.</p>
-      </div>
-
-      <div class="bg-white border border-[#F0EDEA] rounded-card p-8 card-hover">
-        <div class="w-10 h-10 bg-[#F6DCD5] rounded-brand flex items-center justify-center mb-6">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#C64A2A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="14" height="14" rx="2"/><path d="M7 7h6M7 10h6M7 13h4"/></svg>
-        </div>
-        <h3 class="font-heading text-lg font-600 text-[#14130F] mb-3" style="font-weight:600;">Validation-to-build spec export</h3>
-        <p class="text-sm text-[#767573] leading-relaxed">The platform's core differentiator: your confirmed pain points and customer language become a structured build spec that loads into Lovable, v0, or Bolt — so the builder starts with your context, not a blank page.</p>
-      </div>
-
-      <div class="bg-white border border-[#F0EDEA] rounded-card p-8 card-hover">
-        <div class="w-10 h-10 bg-[#F6DCD5] rounded-brand flex items-center justify-center mb-6">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#C64A2A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2l2.4 5 5.6.8-4 3.9.9 5.5L10 14.5l-4.9 2.7.9-5.5-4-3.9 5.6-.8z"/></svg>
-        </div>
-        <h3 class="font-heading text-lg font-600 text-[#14130F] mb-3" style="font-weight:600;">History-aware guidance</h3>
-        <p class="text-sm text-[#767573] leading-relaxed">GTM strategy, pitch framing, and fundraising advice that knows your validated niche, build constraints, and actual customer language — not generic startup playbooks.</p>
-      </div>
-
-      <div class="bg-white border border-[#F0EDEA] rounded-card p-8 card-hover">
-        <div class="w-10 h-10 bg-[#F6DCD5] rounded-brand flex items-center justify-center mb-6">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#C64A2A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 10a8 8 0 1016 0 8 8 0 00-16 0"/><path d="M10 6v4l3 3"/></svg>
-        </div>
-        <h3 class="font-heading text-lg font-600 text-[#14130F] mb-3" style="font-weight:600;">Persistent founder memory</h3>
-        <p class="text-sm text-[#767573] leading-relaxed">One timeline that records every assumption, every conversation, every build decision. Six months in, you can still query why you made any call — and the guidance still knows your full history.</p>
-      </div>
-
-      <div class="bg-white border border-[#F0EDEA] rounded-card p-8 card-hover">
-        <div class="w-10 h-10 bg-[#F6DCD5] rounded-brand flex items-center justify-center mb-6">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#C64A2A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h12M4 10h12M4 14h7"/></svg>
-        </div>
-        <h3 class="font-heading text-lg font-600 text-[#14130F] mb-3" style="font-weight:600;">Solo-founder paced workflow</h3>
-        <p class="text-sm text-[#767573] leading-relaxed">Designed for one person moving at irregular hours — pick up mid-stage, pause, revisit. No team required, no project manager overhead. The platform holds the thread.</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- USE CASES -->
-<section class="bg-white py-24 px-6">
-  <div class="max-w-6xl mx-auto">
-    <div class="mb-16">
-      <p class="font-heading text-xs font-600 uppercase tracking-widest text-[#C64A2A] mb-4">Who it's built for</p>
-      <h2 class="font-heading text-4xl md:text-5xl font-700 text-[#14130F] leading-tight max-w-2xl" style="font-weight:700;letter-spacing:-0.02em;">
-        You're somewhere on this journey.
-      </h2>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-      <div class="border border-[#F0EDEA] rounded-card p-8 card-hover">
-        <div class="w-10 h-10 bg-[#F6DCD5] rounded-brand flex items-center justify-center mb-6">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#C64A2A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="8" r="4"/><path d="M3 18a7 7 0 0114 0"/></svg>
-        </div>
-        <h3 class="font-heading text-lg font-600 text-[#14130F] mb-3" style="font-weight:600;">The idea-stage solo founder</h3>
-        <p class="text-sm text-[#767573] leading-relaxed">You have a strong hypothesis but haven't talked to a single customer yet, and every AI tool you try tells you it's a great idea. You need a first reality check, not more encouragement.</p>
-      </div>
-
-      <div class="border border-[#F0EDEA] rounded-card p-8 card-hover">
-        <div class="w-10 h-10 bg-[#F6DCD5] rounded-brand flex items-center justify-center mb-6">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#C64A2A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="16" height="11" rx="2"/><path d="M6 5V3m8 2V3"/></svg>
-        </div>
-        <h3 class="font-heading text-lg font-600 text-[#14130F] mb-3" style="font-weight:600;">The founder who's done conversations but lost the thread</h3>
-        <p class="text-sm text-[#767573] leading-relaxed">You did the interviews. They're in a Notion doc somewhere. By the time you open Lovable to build, you're starting from scratch again — and the MVP drifts from what you actually learned.</p>
-      </div>
-
-      <div class="border border-[#F0EDEA] rounded-card p-8 card-hover">
-        <div class="w-10 h-10 bg-[#F6DCD5] rounded-brand flex items-center justify-center mb-6">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#C64A2A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 10h10M10 5l5 5-5 5"/></svg>
-        </div>
-        <h3 class="font-heading text-lg font-600 text-[#14130F] mb-3" style="font-weight:600;">The builder stuck at "ready to build but not sure what to build"</h3>
-        <p class="text-sm text-[#767573] leading-relaxed">You're comfortable with AI builders and could ship in a weekend. The bottleneck is knowing which exact features to build first, framed in terms of confirmed customer workflow gaps.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- INTEGRATIONS / HANDOFF -->
-<section class="bg-[#14130F] py-24 px-6">
-  <div class="max-w-6xl mx-auto">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-      <div>
-        <p class="font-heading text-xs font-600 uppercase tracking-widest text-[#C64A2A] mb-4">The handoff that no one else does</p>
-        <h2 class="font-heading text-4xl md:text-5xl font-700 text-white leading-tight mb-6" style="font-weight:700;letter-spacing:-0.02em;">
-          Your validation passes directly into your builder.
-        </h2>
-        <p class="text-[#A8A5A2] text-lg leading-relaxed mb-8">
-          No other tool passes what you found in customer conversations — the exact language they used, the specific workflow gap you confirmed, the features they'd pay for — directly into a structured prompt for Lovable, v0, or Bolt. That narrow handoff is the gap we own.
-        </p>
-        <div class="space-y-4">
-          <div class="flex items-start gap-4">
-            <div class="w-6 h-6 cta-gradient rounded-brand flex items-center justify-center flex-shrink-0 mt-0.5">
-              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5l2 2 4-4"/></svg>
-            </div>
-            <p class="text-[#A8A5A2] text-sm leading-relaxed">Validated customer language pre-loaded as feature descriptions</p>
-          </div>
-          <div class="flex items-start gap-4">
-            <div class="w-6 h-6 cta-gradient rounded-brand flex items-center justify-center flex-shrink-0 mt-0.5">
-              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5l2 2 4-4"/></svg>
-            </div>
-            <p class="text-[#A8A5A2] text-sm leading-relaxed">Confirmed workflow gaps translated into MVP scope boundaries</p>
-          </div>
-          <div class="flex items-start gap-4">
-            <div class="w-6 h-6 cta-gradient rounded-brand flex items-center justify-center flex-shrink-0 mt-0.5">
-              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5l2 2 4-4"/></svg>
-            </div>
-            <p class="text-[#A8A5A2] text-sm leading-relaxed">One-click export to Lovable, v0, or Bolt with full context intact</p>
-          </div>
-        </div>
-      </div>
-      <div class="grid grid-cols-2 gap-4">
-        <div class="bg-[#1F1D1A] border border-[#2E2B27] rounded-card p-6 flex flex-col items-center text-center">
-          <div class="w-10 h-10 bg-[#2E2B27] rounded-brand flex items-center justify-center mb-4">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#C64A2A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="14" height="14" rx="2"/><path d="M7 10h6M10 7v6"/></svg>
-          </div>
-          <p class="font-heading text-sm font-600 text-white">Lovable</p>
-          <p class="text-xs text-[#767573] mt-1">Full-stack AI builder</p>
-        </div>
-        <div class="bg-[#1F1D1A] border border-[#2E2B27] rounded-card p-6 flex flex-col items-center text-center">
-          <div class="w-10 h-10 bg-[#2E2B27] rounded-brand flex items-center justify-center mb-4">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#C64A2A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><path d="M7 10h6M10 7v6"/></svg>
-          </div>
-          <p class="font-heading text-sm font-600 text-white">v0 by Vercel</p>
-          <p class="text-xs text-[#767573] mt-1">UI generation</p>
-        </div>
-        <div class="bg-[#1F1D1A] border border-[#2E2B27] rounded-card p-6 flex flex-col items-center text-center">
-          <div class="w-10 h-10 bg-[#2E2B27] rounded-brand flex items-center justify-center mb-4">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#C64A2A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h10l2 4-7 10L3 7z"/><path d="M3 7h14"/></svg>
-          </div>
-          <p class="font-heading text-sm font-600 text-white">Bolt</p>
-          <p class="text-xs text-[#767573] mt-1">AI app builder</p>
-        </div>
-        <div class="bg-[#C64A2A] rounded-card p-6 flex flex-col items-center text-center">
-          <div class="w-10 h-10 bg-white/20 rounded-brand flex items-center justify-center mb-4">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2l2.4 5 5.6.8-4 3.9.9 5.5L10 14.5l-4.9 2.7.9-5.5-4-3.9 5.6-.8z"/></svg>
-          </div>
-          <p class="font-heading text-sm font-600 text-white">More coming</p>
-          <p class="text-xs text-white/70 mt-1">Expanding integrations</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PRICING -->
-<section id="pricing" class="bg-white py-24 px-6">
-  <div class="max-w-6xl mx-auto">
-    <div class="text-center mb-16">
-      <p class="font-heading text-xs font-600 uppercase tracking-widest text-[#C64A2A] mb-4">Pricing</p>
-      <h2 class="font-heading text-4xl md:text-5xl font-700 text-[#14130F] leading-tight" style="font-weight:700;letter-spacing:-0.02em;">Self-serve. No surprises.</h2>
-      <p class="text-[#767573] mt-4 text-lg max-w-xl mx-auto">One price for the complete journey — validation, conversation logging, build handoff, and ongoing guidance. Pay monthly, cancel any time.</p>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-
-      <!-- Free -->
-      <div class="bg-[#FAFAFA] border border-[#F0EDEA] rounded-card p-8">
-        <p class="font-heading text-sm font-600 text-[#767573] uppercase tracking-wide mb-3">Free</p>
-        <div class="flex items-end gap-1 mb-6">
-          <span class="font-heading text-4xl font-700 text-[#14130F]" style="font-weight:700;">$0</span>
-          <span class="text-[#767573] text-sm mb-1">/mo</span>
-        </div>
-        <ul class="space-y-3 mb-8">
-          <li class="flex items-start gap-3 text-sm text-[#767573]">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#C64A2A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 flex-shrink-0"><path d="M3 8l3 3 7-7"/></svg>
-            One idea validation run
-          </li>
-          <li class="flex items-start gap-3 text-sm text-[#767573]">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#C64A2A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 flex-shrink-0"><path d="M3 8l3 3 7-7"/></svg>
-            Up to 3 conversation logs
-          </li>
-          <li class="flex items-start gap-3 text-sm text-[#767573]">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#C64A2A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 flex-shrink-0"><path d="M3 8l3 3 7-7"/></svg>
-            BUILD / KILL / PIVOT score
-          </li>
-          <li class="flex items-start gap-3 text-sm text-[#A8A5A2]">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#D0CCC8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 flex-shrink-0"><path d="M4 4l8 8M12 4l-8 8"/></svg>
-            Build spec export
-          </li>
-          <li class="flex items-start gap-3 text-sm text-[#A8A5A2]">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#D0CCC8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 flex-shrink-0"><path d="M4 4l8 8M12 4l-8 8"/></svg>
-            Ongoing guidance
-          </li>
-        </ul>
-        <a href="#" class="btn-secondary block text-center py-3 text-sm">Get started free</a>
-      </div>
-
-      <!-- Pro — featured -->
-      <div class="pricing-featured rounded-card p-8 relative">
-        <div class="absolute -top-3 left-1/2 -translate-x-1/2">
-          <span class="bg-[#C64A2A] text-white text-xs font-heading font-600 px-4 py-1.5 rounded-pill">Most popular</span>
-        </div>
-        <p class="font-heading text-sm font-600 text-[#A8A5A2] uppercase tracking-wide mb-3">Pro</p>
-        <div class="flex items-end gap-1 mb-6">
-          <span class="font-heading text-4xl font-700 text-white" style="font-weight:700;">$19</span>
-          <span class="text-[#A8A5A2] text-sm mb-1">/mo</span>
-        </div>
-        <ul class="space-y-3 mb-8">
-          <li class="flex items-start gap-3 text-sm text-[#D0CCC8]">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#C64A2A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 flex-shrink-0"><path d="M3 8l3 3 7-7"/></svg>
-            Unlimited idea validations
-          </li>
-          <li class="flex items-start gap-3 text-sm text-[#D0CCC8]">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#C64A2A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 flex-shrink-0"><path d="M3 8l3 3 7-7"/></svg>
-            Unlimited conversation logs
-          </li>
-          <li class="flex items-start gap-3 text-sm text-[#D0CCC8]">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#C64A2A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 flex-shrink-0"><path d="M3 8l3 3 7-7"/></svg>
-            Full build spec export
-          </li>
-          <li class="flex items-start gap-3 text-sm text-[#D0CCC8]">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#C64A2A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 flex-shrink-0"><path d="M3 8l3 3 7-7"/></svg>
-            Context-aware GTM guidance
-          </li>
-          <li class="flex items-start gap-3 text-sm text-[#D0CCC8]">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#C64A2A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 flex-shrink-0"><path d="M3 8l3 3 7-7"/></svg>
-            Persistent founder memory
-          </li>
-        </ul>
-        <a href="#" class="btn-primary block text-center py-3 text-sm">Start Pro — 14-day trial</a>
-      </div>
-
-      <!-- Growth -->
-      <div class="bg-[#FAFAFA] border border-[#F0EDEA] rounded-card p-8">
-        <p class="font-heading text-sm font-600 text-[#767573] uppercase tracking-wide mb-3">Growth</p>
-        <div class="flex items-end gap-1 mb-6">
-          <span class="font-heading text-4xl font-700 text-[#14130F]" style="font-weight:700;">$29</span>
-          <span class="text-[#767573] text-sm mb-1">/mo</span>
-        </div>
-        <ul class="space-y-3 mb-8">
-          <li class="flex items-start gap-3 text-sm text-[#767573]">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#C64A2A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 flex-shrink-0"><path d="M3 8l3 3 7-7"/></svg>
-            Everything in Pro
-          </li>
-          <li class="flex items-start gap-3 text-sm text-[#767573]">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#C64A2A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 flex-shrink-0"><path d="M3 8l3 3 7-7"/></svg>
-            Pitch deck framing
-          </li>
-          <li class="flex items-start gap-3 text-sm text-[#767573]">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#C64A2A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 flex-shrink-0"><path d="M3 8l3 3 7-7"/></svg>
-            Fundraising context guidance
-          </li>
-          <li class="flex items-start gap-3 text-sm text-[#767573]">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#C64A2A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 flex-shrink-0"><path d="M3 8l3 3 7-7"/></svg>
-            Priority support
-          </li>
-          <li class="flex items-start gap-3 text-sm text-[#767573]">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#C64A2A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 flex-shrink-0"><path d="M3 8l3 3 7-7"/></svg>
-            Early access to new stages
-          </li>
-        </ul>
-        <a href="#" class="btn-secondary block text-center py-3 text-sm">Start Growth — 14-day trial</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- BOTTOM CTA BAND -->
-<section class="cta-gradient py-24 px-6">
-  <div class="max-w-6xl mx-auto text-center">
-    <h2 class="font-heading text-4xl md:text-5xl font-700 text-white leading-tight mb-6" style="font-weight:700;letter-spacing:-0.02em;">
-      Stop losing context every time you switch tools.
-    </h2>
-    <p class="text-white/80 text-lg mb-10 max-w-xl mx-auto leading-relaxed">
-      One place that carries everything you learn — from your first honest validation to the moment you ship. No re-explaining. No reset.
-    </p>
-    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <a href="#pricing" class="inline-block bg-white text-[#C64A2A] font-heading font-600 px-8 py-4 rounded-brand hover:opacity-90 transition-opacity text-base">Get early access — free to start</a>
-      <a href="#how-it-works" class="inline-block border border-white/40 text-white font-heading font-500 px-8 py-4 rounded-brand hover:border-white transition-colors text-base">See how it works</a>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="bg-[#14130F] py-16 px-6">
-  <div class="max-w-6xl mx-auto">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-      <div class="md:col-span-2">
-        <a href="#" class="inline-block mb-5">
-          <img src="public/logo.png" alt="Logo" class="h-8 w-auto" />
+      <div class="flex items-center gap-3">
+        <a href="#" class="hidden md:inline text-sm font-medium text-muted hover:text-ink transition-colors">Sign in</a>
+        <a href="#" class="inline-flex items-center gap-2 px-4 py-2 rounded-brand text-sm font-semibold text-on-accent cta-gradient hover:opacity-90 transition-opacity">
+          Get early access
         </a>
-        <p class="text-[#A8A5A2] text-sm leading-relaxed max-w-xs">
-          One platform that carries a single continuous memory from raw idea to launched MVP. Built for solo founders who are done stitching tools together.
-        </p>
-        <p class="text-[#767573] text-xs mt-6">Self-serve from $19/mo &nbsp;&middot;&nbsp; Cancel any time</p>
-      </div>
-      <div>
-        <p class="font-heading text-xs font-600 uppercase tracking-widest text-[#767573] mb-5">Product</p>
-        <ul class="space-y-3">
-          <li><a href="#how-it-works" class="text-[#A8A5A2] text-sm hover:text-white transition-colors">How it works</a></li>
-          <li><a href="#features" class="text-[#A8A5A2] text-sm hover:text-white transition-colors">Features</a></li>
-          <li><a href="#pricing" class="text-[#A8A5A2] text-sm hover:text-white transition-colors">Pricing</a></li>
-          <li><a href="#" class="text-[#A8A5A2] text-sm hover:text-white transition-colors">Changelog</a></li>
-        </ul>
-      </div>
-      <div>
-        <p class="font-heading text-xs font-600 uppercase tracking-widest text-[#767573] mb-5">Company</p>
-        <ul class="space-y-3">
-          <li><a href="#" class="text-[#A8A5A2] text-sm hover:text-white transition-colors">About</a></li>
-          <li><a href="#" class="text-[#A8A5A2] text-sm hover:text-white transition-colors">Privacy policy</a></li>
-          <li><a href="#" class="text-[#A8A5A2] text-sm hover:text-white transition-colors">Terms of service</a></li>
-          <li><a href="#" class="text-[#A8A5A2] text-sm hover:text-white transition-colors">Contact</a></li>
-        </ul>
       </div>
     </div>
-    <div class="border-t border-[#2E2B27] pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-      <p class="text-[#767573] text-xs">An end-to-end platform for first-time founders that takes them from raw idea to launched MVP.</p>
-      <p class="text-[#767573] text-xs">All rights reserved.</p>
-    </div>
-  </div>
-</footer>
+  </nav>
 
-<!-- Smooth scroll -->
-<script>
-  document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-    anchor.addEventListener('click', function(e) {
-      var target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth' });
-      }
-    });
-  });
-</script>
+  <!-- HERO -->
+  <section class="hero-gradient pt-32 pb-24 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-soft text-primary text-xs font-semibold mb-6 tracking-wide uppercase">
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="https://www.w3.org/2000/svg"><path d="M8 1L10 6H15L11 9.5L12.5 14.5L8 11.5L3.5 14.5L5 9.5L1 6H6L8 1Z" fill="#C64A2A"/></svg>
+          From raw idea to launched MVP
+        </div>
+        <h1 class="text-5xl md:text-6xl font-bold leading-tight tracking-tight text-ink mb-6">
+          One platform. <span class="gradient-text">One memory.</span><br />The whole journey.
+        </h1>
+        <p class="text-lg md:text-xl text-muted leading-relaxed mb-8 max-w-2xl">
+          Stop stitching together ChatGPT, research reports, build tools, and blog posts that each forget what the last one learned. This is the first platform that carries everything you discover — every conversation, every pivot, every decision — straight through to your launched MVP.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href="#" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-brand text-base font-semibold text-on-accent cta-gradient hover:opacity-90 transition-opacity">
+            Start building free
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#how-it-works" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-brand text-base font-semibold text-ink bg-white border border-gray-200 hover:border-primary hover:text-primary transition-colors">
+            See how it works
+          </a>
+        </div>
+        <p class="mt-4 text-xs text-muted">No credit card required. Honest validation — no cheerleading.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM STATEMENT -->
+  <section class="py-16 px-6 bg-ink">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="md:col-span-2">
+          <h2 class="text-2xl md:text-3xl font-bold text-white leading-snug mb-4">
+            Five tools. Zero shared memory. The real cost of the founder's stack.
+          </h2>
+          <p class="text-gray-400 leading-relaxed">
+            Most first-time founders assemble ChatGPT, a market report, an interview framework, an AI builder, and a pile of blog posts. Each tool does one thing well — and forgets everything the others learned. By the time you're building, none of what you validated made it into the spec.
+          </p>
+        </div>
+        <div class="flex flex-col justify-center gap-4">
+          <div class="flex items-center gap-3">
+            <div class="w-2 h-2 rounded-full bg-primary flex-shrink-0"></div>
+            <span class="text-gray-300 text-sm">ChatGPT cheerleads, never challenges</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="w-2 h-2 rounded-full bg-primary flex-shrink-0"></div>
+            <span class="text-gray-300 text-sm">Most founders skip customer conversations entirely</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="w-2 h-2 rounded-full bg-primary flex-shrink-0"></div>
+            <span class="text-gray-300 text-sm">Build tools never see what you validated</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="w-2 h-2 rounded-full bg-primary flex-shrink-0"></div>
+            <span class="text-gray-300 text-sm">Guidance forgets your whole history every session</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how-it-works" class="py-24 px-6 bg-background">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-ink tracking-tight mb-4">Four stages. One continuous memory.</h2>
+        <p class="text-muted text-lg max-w-2xl mx-auto">Every stage feeds the next. What you learn in validation shapes the build spec. What you build informs the GTM. Nothing gets lost.</p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-surface rounded-card p-6 border border-gray-100">
+          <div class="w-10 h-10 rounded-brand bg-accent-soft flex items-center justify-center mb-4">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C64A2A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+          </div>
+          <div class="text-xs font-semibold text-primary uppercase tracking-widest mb-2">Stage 1</div>
+          <h3 class="text-lg font-bold text-ink mb-2">Brutally honest validation</h3>
+          <p class="text-sm text-muted leading-relaxed">No cheerleading. The platform returns a BUILD, KILL, or PIVOT verdict — and won't mark an idea validated until you've logged real customer conversations. Evidence required.</p>
+        </div>
+        <div class="bg-surface rounded-card p-6 border border-gray-100">
+          <div class="w-10 h-10 rounded-brand bg-accent-soft flex items-center justify-center mb-4">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C64A2A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <div class="text-xs font-semibold text-primary uppercase tracking-widest mb-2">Stage 2</div>
+          <h3 class="text-lg font-bold text-ink mb-2">Conversation logging loop</h3>
+          <p class="text-sm text-muted leading-relaxed">Every customer conversation you log visibly moves the verdict. The platform extracts customer language, confirmed pain points, and workflow gaps — and saves them for the build.</p>
+        </div>
+        <div class="bg-surface rounded-card p-6 border border-gray-100">
+          <div class="w-10 h-10 rounded-brand bg-accent-soft flex items-center justify-center mb-4">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C64A2A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <div class="text-xs font-semibold text-primary uppercase tracking-widest mb-2">Stage 3</div>
+          <h3 class="text-lg font-bold text-ink mb-2">Validation-informed build</h3>
+          <p class="text-sm text-muted leading-relaxed">Your validated findings — real customer language, confirmed workflow gaps — flow directly into an MVP spec and into your AI builder prompt. What you learned actually shapes what you build.</p>
+        </div>
+        <div class="bg-surface rounded-card p-6 border border-gray-100">
+          <div class="w-10 h-10 rounded-brand bg-accent-soft flex items-center justify-center mb-4">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C64A2A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          </div>
+          <div class="text-xs font-semibold text-primary uppercase tracking-widest mb-2">Stage 4</div>
+          <h3 class="text-lg font-bold text-ink mb-2">Context-aware guidance</h3>
+          <p class="text-sm text-muted leading-relaxed">GTM strategy, pitch prep, and fundraising advice that knows your idea, your validation evidence, and your build decisions. Not generic blog post advice — your specific startup context.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features" class="py-24 px-6 bg-surface">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-16 items-center mb-20">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-soft text-primary text-xs font-semibold mb-6 uppercase tracking-wide">The key difference</div>
+          <h2 class="text-4xl font-bold text-ink tracking-tight mb-6">The validation-to-build handoff nobody else does</h2>
+          <p class="text-muted leading-relaxed mb-6">Every other tool stops at validation or starts at building. This platform does both — and the critical part is what happens between them. Customer language and confirmed pain points pass directly into the build spec, so your MVP solves what you actually discovered.</p>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3">
+              <svg class="mt-0.5 flex-shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C64A2A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+              <span class="text-sm text-ink">Verdict changes as you log real conversations — not just desk research</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="mt-0.5 flex-shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C64A2A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+              <span class="text-sm text-ink">Confirmed workflow gaps and customer quotes pre-fill your build spec</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="mt-0.5 flex-shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C64A2A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+              <span class="text-sm text-ink">AI builder connectors receive structured context, not a blank prompt</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="mt-0.5 flex-shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C64A2A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+              <span class="text-sm text-ink">Your entire startup history persists — no re-explaining your context</span>
+            </li>
+          </ul>
+        </div>
+        <div class="bg-ink rounded-xl2 p-8">
+          <div class="text-xs font-mono text-gray-500 mb-4">validation_handoff.json</div>
+          <div class="space-y-3">
+            <div class="bg-gray-800 rounded-brand p-3">
+              <div class="text-xs text-gray-500 mb-1">Confirmed pain</div>
+              <div class="text-sm text-white font-mono">"I lose 3 hrs/week re-explaining context to each new tool"</div>
+            </div>
+            <div class="bg-gray-800 rounded-brand p-3">
+              <div class="text-xs text-gray-500 mb-1">Workflow gap</div>
+              <div class="text-sm text-white font-mono">Validation findings never reach builder prompt</div>
+            </div>
+            <div class="bg-gray-800 rounded-brand p-3">
+              <div class="text-xs text-gray-500 mb-1">Build spec directive</div>
+              <div class="text-sm text-primary font-mono font-semibold">Passing context to MVP spec...</div>
+            </div>
+            <div class="flex items-center gap-2 pt-2">
+              <div class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
+              <span class="text-xs text-gray-400">Memory transferred to build stage</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-background rounded-card p-6 border border-gray-100">
+          <div class="w-10 h-10 rounded-brand bg-accent-soft flex items-center justify-center mb-4">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C64A2A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 4.97-4.03 9-9 9S3 16.97 3 12 7.03 3 12 3s9 4.03 9 9z"/></svg>
+          </div>
+          <h3 class="text-base font-bold text-ink mb-2">Evidence-gated verdicts</h3>
+          <p class="text-sm text-muted leading-relaxed">The platform refuses to call an idea validated until you've logged conversations with real potential customers. Desk research alone never unlocks BUILD status.</p>
+        </div>
+        <div class="bg-background rounded-card p-6 border border-gray-100">
+          <div class="w-10 h-10 rounded-brand bg-accent-soft flex items-center justify-center mb-4">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C64A2A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <h3 class="text-base font-bold text-ink mb-2">Persistent founder memory</h3>
+          <p class="text-sm text-muted leading-relaxed">Your idea, pivot history, customer insights, and build decisions accumulate in one place. GTM advice six months in knows everything that happened on day one.</p>
+        </div>
+        <div class="bg-background rounded-card p-6 border border-gray-100">
+          <div class="w-10 h-10 rounded-brand bg-accent-soft flex items-center justify-center mb-4">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C64A2A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <h3 class="text-base font-bold text-ink mb-2">Structured AI builder handoff</h3>
+          <p class="text-sm text-muted leading-relaxed">When you connect to Lovable, v0, or Bolt, they receive a structured context package — not a blank chat. Your validated findings shape the generated code from the first prompt.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- USE CASES -->
+  <section class="py-24 px-6 bg-background">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-ink tracking-tight mb-4">Built for solo founders at the beginning</h2>
+        <p class="text-muted text-lg max-w-xl mx-auto">Not for teams. Not for post-seed. For the one person with an idea who needs the whole journey in one place.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-surface rounded-card p-6 border border-gray-100">
+          <h3 class="font-bold text-ink mb-2">You have an idea, not a business</h3>
+          <p class="text-sm text-muted leading-relaxed">You've been thinking about an idea for weeks. You don't know if it's worth building yet. Start with honest validation that forces you to talk to real people before spending a dollar on code.</p>
+        </div>
+        <div class="bg-surface rounded-card p-6 border border-gray-100">
+          <h3 class="font-bold text-ink mb-2">You validated but the build is a blank page</h3>
+          <p class="text-sm text-muted leading-relaxed">You've done interviews. You have notes. But nothing translates those notes into a build spec or an AI builder prompt. This platform does that translation for you — automatically.</p>
+        </div>
+        <div class="bg-surface rounded-card p-6 border border-gray-100">
+          <h3 class="font-bold text-ink mb-2">You built something but need to grow it</h3>
+          <p class="text-sm text-muted leading-relaxed">GTM, early pricing, pitch framing, investor outreach — the platform knows what you built and why, so guidance isn't generic. It's specific to the startup you actually have.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTEGRATIONS -->
+  <section class="py-16 px-6 bg-accent-soft">
+    <div class="max-w-6xl mx-auto text-center">
+      <p class="text-sm font-semibold text-primary uppercase tracking-widest mb-8">Connects to the builders you already know</p>
+      <div class="flex flex-wrap justify-center items-center gap-8">
+        <div class="flex items-center gap-2 bg-white rounded-brand px-5 py-3 shadow-sm">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#14130F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          <span class="text-sm font-semibold text-ink">Lovable</span>
+        </div>
+        <div class="flex items-center gap-2 bg-white rounded-brand px-5 py-3 shadow-sm">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#14130F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          <span class="text-sm font-semibold text-ink">v0</span>
+        </div>
+        <div class="flex items-center gap-2 bg-white rounded-brand px-5 py-3 shadow-sm">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#14130F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          <span class="text-sm font-semibold text-ink">Bolt</span>
+        </div>
+        <div class="text-sm text-muted">More integrations in development</div>
+      </div>
+      <p class="mt-6 text-xs text-muted max-w-lg mx-auto">Each integration passes structured validation context — customer language, confirmed pain points, workflow gaps — directly into the builder session.</p>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="py-24 px-6 bg-background">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-ink tracking-tight mb-4">Simple, founder-priced plans</h2>
+        <p class="text-muted text-lg">Start free. Pay when the platform earns it.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <!-- Starter -->
+        <div class="bg-surface rounded-card p-8 border border-gray-100">
+          <div class="text-xs font-semibold text-muted uppercase tracking-widest mb-4">Starter</div>
+          <div class="flex items-baseline gap-1 mb-2">
+            <span class="text-4xl font-bold text-ink">Free</span>
+          </div>
+          <p class="text-sm text-muted mb-6">Validate one idea and see if the platform clicks before paying anything.</p>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-start gap-2 text-sm text-ink">
+              <svg class="mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C64A2A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+              1 idea validation
+            </li>
+            <li class="flex items-start gap-2 text-sm text-ink">
+              <svg class="mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C64A2A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+              Up to 3 conversation logs
+            </li>
+            <li class="flex items-start gap-2 text-sm text-ink">
+              <svg class="mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C64A2A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+              BUILD / KILL / PIVOT verdict
+            </li>
+            <li class="flex items-start gap-2 text-sm text-muted">
+              <svg class="mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#767573" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              Build spec export
+            </li>
+            <li class="flex items-start gap-2 text-sm text-muted">
+              <svg class="mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#767573" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              AI builder connectors
+            </li>
+          </ul>
+          <a href="#" class="block text-center px-6 py-3 rounded-brand text-sm font-semibold text-ink border border-gray-200 hover:border-primary hover:text-primary transition-colors">Get started free</a>
+        </div>
+        <!-- Growth (featured) -->
+        <div class="featured-card-gradient rounded-card p-8 shadow-lg relative">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2">
+            <span class="bg-white text-primary text-xs font-bold px-3 py-1 rounded-full shadow-sm">Most popular</span>
+          </div>
+          <div class="text-xs font-semibold text-orange-200 uppercase tracking-widest mb-4">Growth</div>
+          <div class="flex items-baseline gap-1 mb-2">
+            <span class="text-4xl font-bold text-white">$49</span>
+            <span class="text-orange-200">/month</span>
+          </div>
+          <p class="text-sm text-orange-100 mb-6">The full journey — validation through build spec — with persistent memory across all stages.</p>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-start gap-2 text-sm text-white">
+              <svg class="mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+              Unlimited idea validations
+            </li>
+            <li class="flex items-start gap-2 text-sm text-white">
+              <svg class="mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+              Unlimited conversation logs
+            </li>
+            <li class="flex items-start gap-2 text-sm text-white">
+              <svg class="mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+              Validated build spec export
+            </li>
+            <li class="flex items-start gap-2 text-sm text-white">
+              <svg class="mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+              AI builder connectors (Lovable, v0, Bolt)
+            </li>
+            <li class="flex items-start gap-2 text-sm text-white">
+              <svg class="mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+              Context-aware GTM guidance
+            </li>
+            <li class="flex items-start gap-2 text-sm text-white">
+              <svg class="mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+              Full persistent founder memory
+            </li>
+          </ul>
+          <a href="#" class="block text-center px-6 py-3 rounded-brand text-sm font-semibold text-primary bg-white hover:bg-orange-50 transition-colors">Start Growth plan</a>
+        </div>
+        <!-- Accelerate -->
+        <div class="bg-surface rounded-card p-8 border border-gray-100">
+          <div class="text-xs font-semibold text-muted uppercase tracking-widest mb-4">Accelerate</div>
+          <div class="flex items-baseline gap-1 mb-2">
+            <span class="text-4xl font-bold text-ink">$99</span>
+            <span class="text-muted">/month</span>
+          </div>
+          <p class="text-sm text-muted mb-6">For founders actively pitching and fundraising who need the deepest context-aware support.</p>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-start gap-2 text-sm text-ink">
+              <svg class="mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C64A2A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+              Everything in Growth
+            </li>
+            <li class="flex items-start gap-2 text-sm text-ink">
+              <svg class="mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C64A2A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+              Pitch deck structure with your data
+            </li>
+            <li class="flex items-start gap-2 text-sm text-ink">
+              <svg class="mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C64A2A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+              Investor outreach guidance
+            </li>
+            <li class="flex items-start gap-2 text-sm text-ink">
+              <svg class="mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C64A2A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+              Priority support
+            </li>
+          </ul>
+          <a href="#" class="block text-center px-6 py-3 rounded-brand text-sm font-semibold text-ink border border-gray-200 hover:border-primary hover:text-primary transition-colors">Start Accelerate</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section class="cta-gradient py-20 px-6">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-4xl font-bold text-white tracking-tight mb-4">Stop stitching. Start building with memory.</h2>
+      <p class="text-orange-100 text-lg mb-8">Join founders who validate honestly, build purposefully, and never lose context between stages.</p>
+      <a href="#" class="inline-flex items-center gap-2 px-8 py-4 rounded-brand text-base font-semibold text-primary bg-white hover:bg-orange-50 transition-colors">
+        Get early access — free to start
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <p class="mt-4 text-xs text-orange-200">No credit card required for the Starter plan.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-ink text-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <!-- Top row -->
+      <div class="grid md:grid-cols-5 gap-10 py-16 border-b border-white/10">
+        <!-- Brand column -->
+        <div class="md:col-span-2">
+          <img src="public/logo.png" alt="An end-to-end platform for first-time founders that takes them from raw idea ..." class="h-8 w-auto mb-4 brightness-0 invert" />
+          <p class="text-sm text-gray-400 leading-relaxed max-w-xs">
+            The end-to-end platform for first-time founders. One continuous memory from raw idea to launched MVP.
+          </p>
+          <div class="flex items-center gap-4 mt-6">
+            <a href="#" aria-label="Twitter" class="text-gray-500 hover:text-white transition-colors">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+            </a>
+            <a href="#" aria-label="LinkedIn" class="text-gray-500 hover:text-white transition-colors">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+          </div>
+        </div>
+        <!-- Product -->
+        <div>
+          <div class="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-4">Product</div>
+          <ul class="space-y-3">
+            <li><a href="#how-it-works" class="text-sm text-gray-400 hover:text-white transition-colors">How it works</a></li>
+            <li><a href="#features" class="text-sm text-gray-400 hover:text-white transition-colors">Features</a></li>
+            <li><a href="#pricing" class="text-sm text-gray-400 hover:text-white transition-colors">Pricing</a></li>
+            <li><a href="#" class="text-sm text-gray-400 hover:text-white transition-colors">Changelog</a></li>
+          </ul>
+        </div>
+        <!-- Resources -->
+        <div>
+          <div class="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-4">Resources</div>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-sm text-gray-400 hover:text-white transition-colors">Validation guide</a></li>
+            <li><a href="#" class="text-sm text-gray-400 hover:text-white transition-colors">Customer interview tips</a></li>
+            <li><a href="#" class="text-sm text-gray-400 hover:text-white transition-colors">MVP spec template</a></li>
+            <li><a href="#" class="text-sm text-gray-400 hover:text-white transition-colors">Blog</a></li>
+          </ul>
+        </div>
+        <!-- Legal -->
+        <div>
+          <div class="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-4">Legal</div>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-sm text-gray-400 hover:text-white transition-colors">Privacy policy</a></li>
+            <li><a href="#" class="text-sm text-gray-400 hover:text-white transition-colors">Terms of service</a></li>
+            <li><a href="#" class="text-sm text-gray-400 hover:text-white transition-colors">Cookie policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- Bottom bar -->
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 py-6">
+        <p class="text-xs text-gray-600">2024 An end-to-end platform for first-time founders that takes them from raw idea ... All rights reserved.</p>
+        <p class="text-xs text-gray-600">Built for founders who do the hard work first.</p>
+      </div>
+    </div>
+  </footer>
 
 </body>
 </html>
