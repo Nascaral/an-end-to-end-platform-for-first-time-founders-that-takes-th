@@ -16,10 +16,10 @@ Entry point: `index.html`
 
 ## Security & quality
 
-This build passed **24** hard security checks.
+This build passed **8** hard security checks.
 
-**6** soft findings noted in the build log — review before going to production.
+**5** soft findings noted in the build log — review before going to production.
 
 ## Notes
 
-Built a complete static landing page composing the gradient-vibrant archetype with the warm-editorial brand skin. Hero uses a warm cream-to-white wash with gradient text on the headline. The mock UI card in the hero shows an honest BUILD/KILL/PIVOT verdict in motion — anchoring the 'no cheerleading' promise visually. Sections: nav, hero, proof bar, how-it-works (4 stages), the problem (fragmentation), features, integrations, use cases, 3-tier pricing (free/$19/$29), CTA band, and dark footer. Accent (#C64A2A) appears as the gradient fill on CTAs and the hero band, keeping it scarce elsewhere. The public/logo.png file is referenced but left as a placeholder — replace with the real asset.
+Built as a single-file static landing page using Tailwind via CDN. Brand colors (#C64A2A primary, #FAFAFA surface, #14130F ink), Space Grotesk headings, and Inter body are applied exactly as specified. The honest-context banner and assumption cards surface the PIVOT/UNPROVEN status without papering over it. The validation-to-build handoff is positioned as the core differentiator per the pivot direction. No emoji anywhere; all icons are inline SVG. The logo references public/logo.png in nav, hero area implicitly via nav, and footer with brightness-invert for dark background.
