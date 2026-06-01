@@ -1,6 +1,6 @@
 # An end-to-end platform for first-time founders that takes them from raw idea ...
 
-Built with **Founder AI Guide** for the Static landing page stack.
+Built with **figurr** for the Static landing page stack.
 
 ## Run locally
 
@@ -16,10 +16,10 @@ Entry point: `index.html`
 
 ## Security & quality
 
-This build passed **8** hard security checks.
+This build passed **24** hard security checks.
 
-**5** soft findings noted in the build log — review before going to production.
+No soft findings noted.
 
 ## Notes
 
-Built as a single-file static landing page using Tailwind via CDN. Brand colors (#C64A2A primary, #FAFAFA surface, #14130F ink), Space Grotesk headings, and Inter body are applied exactly as specified. The honest-context banner and assumption cards surface the PIVOT/UNPROVEN status without papering over it. The validation-to-build handoff is positioned as the core differentiator per the pivot direction. No emoji anywhere; all icons are inline SVG. The logo references public/logo.png in nav, hero area implicitly via nav, and footer with brightness-invert for dark background.
+Built as a single-file static landing page using Tailwind via CDN with Space Grotesk and Inter from Google Fonts. The page follows the gradient-vibrant archetype with the exact brand tokens (primary #C64A2A, surface #FAFAFA, ink #14130F). Sections: sticky nav, hero with gradient wash, problem/fragmentation band, 4-stage how-it-works, 3x2 features grid, 3-column use cases, dark integrations band (Lovable/v0/Bolt handoff), 3-tier pricing with featured dark Pro card, gradient CTA band, and dark footer. Copy is honest about the product's early stage and surfaces the pivot direction (validation-to-build handoff) as the core differentiator without overclaiming. No emoji anywhere; all icons are inline SVG. The logo.png placeholder file is included at public/logo.png — replace it with the real asset before deploying.
